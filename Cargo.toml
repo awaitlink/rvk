@@ -1,0 +1,9 @@
+[package]
+name = "rvk"
+version = "0.0.0"
+authors = ["Artem Varaksa <aymfst@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+description = "Placeholder"
+
+[dependencies]
