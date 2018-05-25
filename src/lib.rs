@@ -1,7 +1,6 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}
+extern crate futures;
+extern crate tokio_core;
+extern crate hyper;
+extern crate hyper_tls;
+
+pub mod client;
