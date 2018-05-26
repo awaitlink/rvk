@@ -1,4 +1,3 @@
-api_method!(get_hints, "search.getHints");
 api_method!(add_app_event, "secure.addAppEvent");
 api_method!(check_token, "secure.checkToken");
 api_method!(get_app_balance, "secure.getAppBalance");

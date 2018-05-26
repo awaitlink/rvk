@@ -10,7 +10,7 @@ macro_rules! api_method {
         /// ## Note about naming
         /// Rust (and this crate too) prefers `snake_case` in the function names instead of `camelCase` used by the VK API.
         ///
-        /// **Example:** To call the `auth.checkPhone` API method, use the `rvk::methods::auth::check_phone` function.
+        /// **Example:** To call the `appWidgets.getAppImageUploadServer` API method, use the `rvk::methods::app_widgets::get_app_image_upload_server` function.
         ///
         /// ## Note about `photos.move`
         /// Since `move` is a Rust keyword, the function for calling `photos.move` method is `rvk::methods::photos::move_` (**with the underscore!**)
@@ -24,10 +24,12 @@ macro_rules! api_method {
     );
 }
 
+api_method!(execute, "execute");
+
 pub mod account;
 pub mod ads;
+pub mod app_widgets;
 pub mod apps;
-pub mod audio;
 pub mod auth;
 pub mod board;
 pub mod database;
@@ -48,6 +50,7 @@ pub mod pages;
 pub mod photos;
 pub mod places;
 pub mod polls;
+pub mod search;
 pub mod secure;
 pub mod stats;
 pub mod status;

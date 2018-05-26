@@ -7,7 +7,6 @@ api_method!(get_counters, "account.getCounters");
 api_method!(get_info, "account.getInfo");
 api_method!(get_profile_info, "account.getProfileInfo");
 api_method!(get_push_settings, "account.getPushSettings");
-api_method!(lookup_contacts, "account.lookupContacts");
 api_method!(register_device, "account.registerDevice");
 api_method!(save_profile_info, "account.saveProfileInfo");
 api_method!(set_info, "account.setInfo");
