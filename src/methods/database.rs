@@ -1,0 +1,11 @@
+api_method!(get_chairs, "database.getChairs");
+api_method!(get_cities, "database.getCities");
+api_method!(get_cities_by_id, "database.getCitiesById");
+api_method!(get_countries, "database.getCountries");
+api_method!(get_countries_by_id, "database.getCountriesById");
+api_method!(get_faculties, "database.getFaculties");
+api_method!(get_regions, "database.getRegions");
+api_method!(get_school_classes, "database.getSchoolClasses");
+api_method!(get_schools, "database.getSchools");
+api_method!(get_streets_by_id, "database.getStreetsById");
+api_method!(get_universities, "database.getUniversities");

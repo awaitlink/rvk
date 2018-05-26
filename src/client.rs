@@ -1,4 +1,6 @@
-use std::collections::HashMap;
+//! Defines an API client, response, and error
+
+use super::Params;
 
 use futures::{Future, Stream};
 use tokio_core::reactor::Core;
@@ -8,27 +10,33 @@ use hyper_tls::HttpsConnector;
 
 use serde_json::{from_slice, Value};
 
+/// An API response
 pub type APIResponse = Result<Value, APIError>;
 
+/// An error returned by the API
 pub struct APIError {
     code: u64,
     msg: String,
 }
 
 impl APIError {
+    /// Creates a new `APIError`
     pub fn new(code: u64, msg: String) -> APIError {
         APIError { code, msg }
     }
 
+    /// Returns the error code
     pub fn code(&self) -> u64 {
         self.code
     }
 
+    /// Returns the error message
     pub fn msg(&self) -> &String {
         &self.msg
     }
 }
 
+/// An API client used to call API methods
 pub struct APIClient<'a> {
     core: Core,
     client: Client<HttpsConnector<HttpConnector>, Body>,
@@ -37,6 +45,7 @@ pub struct APIClient<'a> {
 }
 
 impl<'a> APIClient<'a> {
+    /// Creates a new `APIClient`
     pub fn new(token: &str) -> APIClient {
         let core = Core::new().unwrap();
         let handle = core.handle();
@@ -52,16 +61,13 @@ impl<'a> APIClient<'a> {
         }
     }
 
+    /// Runs the given `Future` on the tokio core
     pub fn run<F: Future>(&mut self, work: F) -> Result<F::Item, F::Error> {
         self.core.run(work)
     }
 
-    pub fn call_method<F>(
-        &self,
-        method_name: &str,
-        params: HashMap<&str, &str>,
-        then: F,
-    ) -> impl Future
+    /// Calls an API method
+    pub fn call_method<F>(&self, method_name: &str, params: Params, then: F) -> impl Future
     where
         F: Fn(APIResponse),
     {

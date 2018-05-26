@@ -1,0 +1,12 @@
+api_method!(add_group, "fave.addGroup");
+api_method!(add_link, "fave.addLink");
+api_method!(add_user, "fave.addUser");
+api_method!(get_links, "fave.getLinks");
+api_method!(get_market_items, "fave.getMarketItems");
+api_method!(get_photos, "fave.getPhotos");
+api_method!(get_posts, "fave.getPosts");
+api_method!(get_users, "fave.getUsers");
+api_method!(get_videos, "fave.getVideos");
+api_method!(remove_group, "fave.removeGroup");
+api_method!(remove_link, "fave.removeLink");
+api_method!(remove_user, "fave.removeUser");

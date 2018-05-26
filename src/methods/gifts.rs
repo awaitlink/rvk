@@ -1,0 +1,1 @@
+api_method!(get, "gifts.get");

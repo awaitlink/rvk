@@ -1,0 +1,15 @@
+api_method!(add_ban, "newsfeed.addBan");
+api_method!(delete_ban, "newsfeed.deleteBan");
+api_method!(delete_list, "newsfeed.deleteList");
+api_method!(get, "newsfeed.get");
+api_method!(get_banned, "newsfeed.getBanned");
+api_method!(get_comments, "newsfeed.getComments");
+api_method!(get_lists, "newsfeed.getLists");
+api_method!(get_mentions, "newsfeed.getMentions");
+api_method!(get_recommended, "newsfeed.getRecommended");
+api_method!(get_suggested_sources, "newsfeed.getSuggestedSources");
+api_method!(ignore_item, "newsfeed.ignoreItem");
+api_method!(save_list, "newsfeed.saveList");
+api_method!(search, "newsfeed.search");
+api_method!(unignore_item, "newsfeed.unignoreItem");
+api_method!(unsubscribe, "newsfeed.unsubscribe");

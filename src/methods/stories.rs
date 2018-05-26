@@ -1,0 +1,13 @@
+api_method!(ban_owner, "stories.banOwner");
+api_method!(delete, "stories.delete");
+api_method!(get, "stories.get");
+api_method!(get_banned, "stories.getBanned");
+api_method!(get_by_id, "stories.getById");
+api_method!(get_photo_upload_server, "stories.getPhotoUploadServer");
+api_method!(get_replies, "stories.getReplies");
+api_method!(get_stats, "stories.getStats");
+api_method!(get_video_upload_server, "stories.getVideoUploadServer");
+api_method!(get_viewers, "stories.getViewers");
+api_method!(hide_all_replies, "stories.hideAllReplies");
+api_method!(hide_reply, "stories.hideReply");
+api_method!(unban_owner, "stories.unbanOwner");
