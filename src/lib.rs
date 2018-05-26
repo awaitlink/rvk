@@ -10,7 +10,7 @@
 //! use rvk::{APIClient, Params, methods::*};
 //!
 //! fn main() {
-//!     let mut api = APIClient::new("your_access_token"); // Create an API Client
+//!     let mut api = APIClient::new("your_access_token").unwrap(); // Create an API Client
 //!
 //!     let mut params = Params::new(); // Create a HashMap to store parameters
 //!     params.insert("user_ids", "1");
@@ -47,6 +47,8 @@ extern crate tokio_core;
 
 extern crate hyper;
 extern crate hyper_tls;
+
+extern crate url;
 
 extern crate serde_json;
 
