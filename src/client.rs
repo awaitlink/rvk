@@ -85,7 +85,7 @@ impl<'a> APIClient<'a> {
     /// - URL parsing failed
     /// - The structure of the API's JSON response is invalid
     ///
-    /// These conditions shouldn't be met under normal conditions.
+    /// These conditions shouldn't be met unless something goes horribly wrong.
     pub fn call_method<F>(&self, method_name: &str, params: Params, then: F) -> impl Future
     where
         F: Fn(APIResponse),

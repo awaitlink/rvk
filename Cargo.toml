@@ -8,6 +8,8 @@ description = "Crate for accessing VK API"
 repository = "https://github.com/u32i64/rvk"
 keywords = ["vk", "api"]
 categories = ["api-bindings", "asynchronous"]
+
+[badges]
 maintenance = { status = "actively-developed" }
 
 [dependencies]
