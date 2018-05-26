@@ -3,7 +3,7 @@
 [![downloads](https://img.shields.io/crates/d/rvk.svg?style=flat-square)](https://crates.io/crates/rvk)
 [![license](https://img.shields.io/crates/l/rvk.svg?style=flat-square)](https://crates.io/crates/rvk)
 
-A crate for accessing VK API.
+A crate for accessing VK API in Rust.
 
 # Usage
 Add the dependency to your `Cargo.toml` file:

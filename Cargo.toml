@@ -1,6 +1,6 @@
 [package]
 name = "rvk"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Artem Varaksa <aymfst@gmail.com>"]
 readme = "README.md"
 license = "MIT"
