@@ -13,6 +13,16 @@
 //!
 //!     let work = users::get(&api, params, |res| match res {
 //!         Ok(v) => { // If the API returned a response, you get `serde_json::Value` here
+//!
+//!             // In this example, `v` corresponds to this JSON:
+//!             // [
+//!             //   {
+//!             //     "id": 1,
+//!             //     "first_name": "Pavel",
+//!             //     "last_name": "Durov"
+//!             //   }
+//!             // ]
+//!
 //!             let user = v.as_array().unwrap().get(0).unwrap();
 //!
 //!             let first_name = user.get("first_name").unwrap().as_str().unwrap();

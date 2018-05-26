@@ -10,7 +10,7 @@ use hyper_tls::HttpsConnector;
 
 use serde_json::{from_slice, Value};
 
-/// An API response
+/// An API response, which is either an actual response or an error
 pub type APIResponse = Result<Value, APIError>;
 
 /// An error returned by the API
@@ -45,7 +45,7 @@ pub struct APIClient<'a> {
 }
 
 impl<'a> APIClient<'a> {
-    /// Creates a new `APIClient`
+    /// Creates a new `APIClient`, given an access token
     pub fn new(token: &str) -> APIClient {
         let core = Core::new().unwrap();
         let handle = core.handle();
@@ -61,12 +61,20 @@ impl<'a> APIClient<'a> {
         }
     }
 
-    /// Runs the given `Future` on the tokio core
+    /// Runs the given `Future` on the `tokio_core::reactor::Core` stored in the `APIClient`
     pub fn run<F: Future>(&mut self, work: F) -> Result<F::Item, F::Error> {
         self.core.run(work)
     }
 
-    /// Calls an API method
+    /// Calls an API method, given its name, parameters, and a closure which
+    /// will be ran when the call actually finishes
+    ///
+    /// # Note
+    /// This function returns a `Future`.
+    ///
+    /// `Future`s are lazy.
+    ///
+    /// Use the [`APIClient::run`](#method.run) function to make them actually do stuff.
     pub fn call_method<F>(&self, method_name: &str, params: Params, then: F) -> impl Future
     where
         F: Fn(APIResponse),

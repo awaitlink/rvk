@@ -1,9 +1,11 @@
-//! Contains all of the API methods in the respective submodules
+//! Contains all of the API methods in the respective submodules.
+//!
+//! Note that the `execute` method has no category, so it is located in `rvk::methods::execute`.
 
 /// A macro which creates a function that calls a specified VK API method
 macro_rules! api_method {
     ($func_name: ident, $method_name: expr) => (
-        /// Calls a VK API method
+        /// Calls a corresponding VK API method with the supplied parameters
         ///
         /// # General documentation for all methods
         ///
