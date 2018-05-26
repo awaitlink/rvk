@@ -1,4 +1,8 @@
-//! Crate for accessing VK API
+//! # Overview
+//! This is a crate for accessing VK API.
+//!
+//! All of the API [methods](https://vk.com/dev/methods) are located in the `methods`
+//! [module](#modules) of this crate (in the corresponding submodules).
 //!
 //! # Example
 //! ```no_run
