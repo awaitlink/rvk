@@ -5,6 +5,10 @@ authors = ["Artem Varaksa <aymfst@gmail.com>"]
 readme = "README.md"
 license = "MIT"
 description = "Crate for accessing VK API"
+repository = "https://github.com/u32i64/rvk"
+keywords = ["vk", "api"]
+categories = ["api-bindings", "asynchronous"]
+maintenance = { status = "actively-developed" }
 
 [dependencies]
 futures = "0.1"
