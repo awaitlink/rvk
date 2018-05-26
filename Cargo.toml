@@ -1,10 +1,10 @@
 [package]
 name = "rvk"
-version = "0.0.0"
+version = "0.1.0"
 authors = ["Artem Varaksa <aymfst@gmail.com>"]
 readme = "README.md"
 license = "MIT"
-description = "Placeholder"
+description = "Crate for accessing VK API"
 
 [dependencies]
 futures = "0.1"

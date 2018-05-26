@@ -1,4 +1,4 @@
-//! This crate makes accessing VK API easier
+//! Crate for accessing VK API
 //!
 //! # Example
 //! ```no_run

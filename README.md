@@ -1,3 +1,3 @@
-# Placeholder
+# Crate for accessing VK API
 
-This is a placeholder for something that will be (hopefully) made in the near future.
+
