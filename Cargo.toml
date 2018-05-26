@@ -1,12 +1,12 @@
 [package]
 name = "rvk"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Artem Varaksa <aymfst@gmail.com>"]
 readme = "README.md"
 license = "MIT"
 description = "Crate for accessing VK API"
 repository = "https://github.com/u32i64/rvk"
-keywords = ["vk", "api"]
+keywords = ["vk", "api", "method"]
 categories = ["api-bindings", "asynchronous"]
 
 [badges]
