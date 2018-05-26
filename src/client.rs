@@ -3,15 +3,31 @@ use std::collections::HashMap;
 use futures::{Future, Stream};
 use tokio_core::reactor::Core;
 
-use hyper::{
-    Client, Body,
-    client::{
-        HttpConnector,
-    }
-};
+use hyper::{Body, Client, client::HttpConnector};
 use hyper_tls::HttpsConnector;
 
-use serde_json::{Value, from_slice};
+use serde_json::{from_slice, Value};
+
+pub type APIResponse = Result<Value, APIError>;
+
+pub struct APIError {
+    code: u64,
+    msg: String,
+}
+
+impl APIError {
+    pub fn new(code: u64, msg: String) -> APIError {
+        APIError { code, msg }
+    }
+
+    pub fn code(&self) -> u64 {
+        self.code
+    }
+
+    pub fn msg(&self) -> &String {
+        &self.msg
+    }
+}
 
 pub struct APIClient<'a> {
     core: Core,
@@ -40,12 +56,17 @@ impl<'a> APIClient<'a> {
         self.core.run(work)
     }
 
-    pub fn call_method<F>(&self, method_name: &str, params: HashMap<&str, &str>, then: F)
-        -> impl Future
-        where F: Fn(APIResponse)
+    pub fn call_method<F>(
+        &self,
+        method_name: &str,
+        params: HashMap<&str, &str>,
+        then: F,
+    ) -> impl Future
+    where
+        F: Fn(APIResponse),
     {
-        let mut url = "https://api.vk.com/method/".to_owned();
-        url += &(method_name.to_owned() + "?v=" + self.api_version + "&access_token=" + self.token);
+        let mut url = "https://api.vk.com/method/".to_owned() + method_name + "?v="
+            + self.api_version + "&access_token=" + self.token;
 
         for (name, value) in params.iter() {
             url += &("&".to_owned() + name + "=" + value);
@@ -56,13 +77,25 @@ impl<'a> APIClient<'a> {
         self.client.get(url).and_then(|res| {
             res.body().concat2().map(move |body| {
                 let data: Value = from_slice(&body).unwrap();
-                then(APIResponse::Ok(data)); // TODO: Distinguish between Ok and Error
+                let response = data.as_object().unwrap();
+
+                match response.get("response") {
+                    Some(ok) => then(Ok(ok.clone())),
+                    None => match response.get("error") {
+                        Some(err) => {
+                            let error = err.as_object().unwrap();
+
+                            let code = error.get("error_code").unwrap().as_u64().unwrap();
+                            let msg = error.get("error_msg").unwrap().as_str().unwrap();
+
+                            let api_err = APIError::new(code, msg.to_owned());
+
+                            then(Err(api_err));
+                        }
+                        None => unreachable!(),
+                    },
+                };
             })
         })
     }
-}
-
-pub enum APIResponse {
-    Ok(Value),
-    Error(u64, String),
 }
