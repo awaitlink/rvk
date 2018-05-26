@@ -1,5 +1,6 @@
 # `rvk`
 [![version](https://img.shields.io/crates/v/rvk.svg?style=flat-square)](https://crates.io/crates/rvk)
+[![travis build](https://img.shields.io/travis/u32i64/rvk.svg?style=flat-square)](https://travis-ci.com/u32i64/rvk/builds)
 [![downloads](https://img.shields.io/crates/d/rvk.svg?style=flat-square)](https://crates.io/crates/rvk)
 [![license](https://img.shields.io/crates/l/rvk.svg?style=flat-square)](https://crates.io/crates/rvk)
 
