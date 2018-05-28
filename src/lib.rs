@@ -43,14 +43,12 @@
 //! ```
 
 extern crate futures;
-extern crate tokio_core;
-
+extern crate heck;
 extern crate hyper;
 extern crate hyper_tls;
-
-extern crate url;
-
 extern crate serde_json;
+extern crate tokio_core;
+extern crate url;
 
 pub mod client;
 pub mod methods;

@@ -1,2 +1,4 @@
-api_method!(get, "status.get");
-api_method!(set, "status.set");
+api_category!("status");
+
+api_method!(get);
+api_method!(set);

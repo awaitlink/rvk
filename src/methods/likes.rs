@@ -1,4 +1,6 @@
-api_method!(add, "likes.add");
-api_method!(delete, "likes.delete");
-api_method!(get_list, "likes.getList");
-api_method!(is_liked, "likes.isLiked");
+api_category!("likes");
+
+api_method!(add);
+api_method!(delete);
+api_method!(get_list);
+api_method!(is_liked);

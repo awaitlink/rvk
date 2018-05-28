@@ -1,6 +1,8 @@
-api_method!(add, "places.add");
-api_method!(checkin, "places.checkin");
-api_method!(get_by_id, "places.getById");
-api_method!(get_checkins, "places.getCheckins");
-api_method!(get_types, "places.getTypes");
-api_method!(search, "places.search");
+api_category!("places");
+
+api_method!(add);
+api_method!(checkin);
+api_method!(get_by_id);
+api_method!(get_checkins);
+api_method!(get_types);
+api_method!(search);

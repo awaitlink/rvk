@@ -1,2 +1,4 @@
-api_method!(get_comments, "widgets.getComments");
-api_method!(get_pages, "widgets.getPages");
+api_category!("widgets");
+
+api_method!(get_comments);
+api_method!(get_pages);

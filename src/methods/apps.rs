@@ -1,7 +1,9 @@
-api_method!(delete_app_requests, "apps.deleteAppRequests");
-api_method!(get, "apps.get");
-api_method!(get_catalog, "apps.getCatalog");
-api_method!(get_friends_list, "apps.getFriendsList");
-api_method!(get_leaderboard, "apps.getLeaderboard");
-api_method!(get_score, "apps.getScore");
-api_method!(send_request, "apps.sendRequest");
+api_category!("apps");
+
+api_method!(delete_app_requests);
+api_method!(get);
+api_method!(get_catalog);
+api_method!(get_friends_list);
+api_method!(get_leaderboard);
+api_method!(get_score);
+api_method!(send_request);
