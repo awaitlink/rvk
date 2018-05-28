@@ -1,7 +1,7 @@
 # `rvk`
 [![version](https://img.shields.io/crates/v/rvk.svg?style=flat-square)](https://crates.io/crates/rvk)
 [![downloads](https://img.shields.io/crates/d/rvk.svg?style=flat-square)](https://crates.io/crates/rvk)
-[![license](https://img.shields.io/crates/l/rvk.svg?style=flat-square)](https://crates.io/crates/rvk)
+[![license](https://img.shields.io/crates/l/rvk.svg?style=flat-square)](https://github.com/u32i64/rvk/blob/master/LICENSE)
 
 A crate for accessing VK API in Rust.
 
