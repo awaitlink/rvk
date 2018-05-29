@@ -1,6 +1,6 @@
 [package]
 name = "rvk"
-version = "0.1.7"
+version = "0.1.8"
 authors = ["Artem Varaksa <aymfst@gmail.com>"]
 readme = "README.md"
 license = "MIT"
@@ -10,7 +10,7 @@ keywords = ["vk", "api", "method"]
 categories = ["api-bindings", "asynchronous"]
 
 [badges]
-maintenance = { status = "actively-developed" }
+maintenance = { status = "passively-maintained" }
 
 [dependencies]
 futures = "0.1"
