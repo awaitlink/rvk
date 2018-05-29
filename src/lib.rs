@@ -1,3 +1,5 @@
+#![doc(html_logo_url = "https://raw.githubusercontent.com/u32i64/rvk/master/logo.png")]
+
 //! # Overview
 //! This is a crate for accessing VK API.
 //!
