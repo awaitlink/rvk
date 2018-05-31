@@ -1,104 +1,94 @@
-//! Defines custom error types used in this crate
+//! All errors that can happen during a method call
 
-use super::api::APIError;
-use std::convert::Into;
 use std::fmt::{self, Display, Formatter};
-use std::io;
+use std::result::Result as StdResult;
 
-/// An error kind
-#[derive(Debug, Copy, Clone)]
-pub enum ErrorKind {
-    API,
-    Request,
-    Serde,
-    Other,
+/// Convenience type for defining `Result`s
+pub type Result<T> = StdResult<T, Error>;
+
+/// An error returned by the API
+#[derive(Deserialize, Debug)]
+pub struct APIError {
+    code: u64,
+    msg: String,
 }
 
-impl Display for ErrorKind {
-    fn fmt(&self, f: &mut Formatter) -> Result<(), fmt::Error> {
-        f.write_str(match self {
-            &ErrorKind::API => "API",
-            &ErrorKind::Request => "Request",
-            &ErrorKind::Serde => "Serde",
-            &ErrorKind::Other => "Other",
-        })
+impl APIError {
+    /// Creates a new `APIError`
+    pub fn new(code: u64, msg: String) -> APIError {
+        APIError { code, msg }
+    }
+
+    /// Returns the code of this `APIError`
+    pub fn code(&self) -> u64 {
+        self.code
+    }
+
+    /// Returns the message of this `APIError`
+    pub fn msg(&self) -> &String {
+        &self.msg
     }
 }
 
-/// An error
+impl Display for APIError {
+    fn fmt(&self, f: &mut Formatter) -> StdResult<(), fmt::Error> {
+        f.write_str(&format!("APIError #{}: {}", self.code(), self.msg()))
+    }
+}
+
+/// A generic error
 #[derive(Debug)]
-pub struct Error {
-    kind: ErrorKind,
-    description: String,
-}
+pub enum Error {
+    /// Errors from the API
+    API(APIError),
 
-impl Error {
-    /// Creates a new `Error`
-    pub fn new(kind: ErrorKind, description: String) -> Error {
-        Error { kind, description }
-    }
+    /// Errors with making a request
+    Request(::reqwest::Error),
 
-    /// Convenience function for creating errors with `ErrorKind::API`
-    pub fn api_err(description: &str) -> Error {
-        Error::new(ErrorKind::API, description.to_string())
-    }
+    /// Serde Errors
+    Serde(::serde_json::error::Error),
 
-    /// Convenience function for creating errors with `ErrorKind::Other`
-    pub fn other_err(description: &str) -> Error {
-        Error::new(ErrorKind::Other, description.to_string())
-    }
-
-    /// Convenience function for creating errors with `ErrorKind::Serde`
-    pub fn serde_err(description: &str) -> Error {
-        Error::new(ErrorKind::Serde, description.to_string())
-    }
-
-    /// Convenience function for creating errors with `ErrorKind::Request`
-    pub fn request_err(description: &str) -> Error {
-        Error::new(ErrorKind::Request, description.to_string())
-    }
-
-    /// Adds additional information to the error
-    pub fn add_info(mut self, info: &str) -> Error {
-        self.description += &("; ".to_string() + info);
-        self
-    }
-
-    /// Returns this `Error`'s kind
-    pub fn kind(&self) -> ErrorKind {
-        self.kind
-    }
-
-    /// Returns this `Error`'s description
-    pub fn description(&self) -> &String {
-        &self.description
-    }
+    /// Other errors
+    Other(String),
 }
 
 impl Display for Error {
-    fn fmt(&self, f: &mut Formatter) -> Result<(), fmt::Error> {
-        f.write_str(&format!(
-            "[rvk] {} error: {}",
-            self.kind(),
-            self.description()
-        ))
+    fn fmt(&self, f: &mut Formatter) -> StdResult<(), fmt::Error> {
+        match self {
+            Error::API(e) => e.fmt(f),
+            Error::Request(e) => e.fmt(f),
+            Error::Serde(e) => e.fmt(f),
+            Error::Other(s) => f.write_str(&s),
+        }
     }
 }
 
 impl From<APIError> for Error {
-    fn from(err: APIError) -> Error {
-        Error::api_err(&format!("code: {}, message: {}", err.code, err.msg))
+    fn from(e: APIError) -> Error {
+        Error::API(e)
     }
 }
 
-impl From<::serde_json::Error> for Error {
-    fn from(err: ::serde_json::Error) -> Error {
-        Error::serde_err(&err.to_string())
+impl From<::reqwest::Error> for Error {
+    fn from(e: ::reqwest::Error) -> Error {
+        Error::Request(e)
     }
 }
 
-impl Into<io::Error> for Error {
-    fn into(self) -> io::Error {
-        io::Error::new(io::ErrorKind::Other, self.to_string())
+impl From<::serde_json::error::Error> for Error {
+    fn from(e: ::serde_json::error::Error) -> Error {
+        Error::Serde(e)
+    }
+}
+
+impl From<String> for Error {
+    fn from(s: String) -> Error {
+        Error::Other(s)
+    }
+}
+
+impl From<&'static str> for Error {
+    fn from(s: &'static str) -> Error {
+        s.to_string().into()
     }
 }

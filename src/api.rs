@@ -1,19 +1,12 @@
-//! Defines an API client, response, and error
+//! Works with the API
 
-use super::error::Error;
+use super::error::{APIError, Result};
 use super::Params;
-use reqwest::Client;
-use serde_json::{from_value, Value};
+use reqwest::{Client, Response};
+use serde_json::{from_value, Map, Value};
 
 /// An API response, which is either an actual response or an error
-pub type APIResponse = Result<Value, Error>;
-
-/// An error returned by the API
-#[derive(Deserialize)]
-pub struct APIError {
-    pub code: u64,
-    pub msg: String,
-}
+pub type APIResponse = Result<Value>;
 
 /// An API client used to call API methods
 pub struct APIClient<'a> {
@@ -40,26 +33,26 @@ impl<'a> APIClient<'a> {
         params.insert("v", self.api_version);
         params.insert("access_token", self.token);
 
-        let mut res = self.client
+        let response_result: Result<Response> = self.client
             .get(&("https://api.vk.com/method/".to_owned() + method_name))
             .query(&params)
             .send()
-            .map_err(|e| Error::request_err("Can't make a request").add_info(&e.to_string()))?;
+            .map_err(|e| e.into());
+        let mut response = response_result?;
 
-        let data: Value = res.json().map_err(|e| {
-            Error::serde_err("Can't deserialize API response").add_info(&e.to_string())
-        })?;
+        let value_result: Result<Value> = response.json().map_err(|e| e.into());
+        let value = value_result?;
 
-        let response = data.as_object()
-            .ok_or(Error::serde_err("API response is not an object!"))?;
+        let api_response_result: Result<&Map<String, Value>> = value
+            .as_object()
+            .ok_or("API response is not an object!".into());
+        let api_response = api_response_result?;
 
-        match response.get("response") {
+        match api_response.get("response") {
             Some(ok) => Ok(ok.clone()),
-            None => match response.get("error") {
+            None => match api_response.get("error") {
                 Some(err) => Err(from_value::<APIError>(err.clone())?.into()),
-                None => Err(Error::other_err(
-                    "The API responded with neither a response nor an error!",
-                )),
+                None => Err("The API responded with neither a response nor an error!".into()),
             },
         }
     }
