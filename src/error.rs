@@ -1,12 +1,11 @@
 //! Defines custom error types used in this crate
 
 use super::api::APIError;
-use serde_json::Error as SerdeError;
 use std::convert::Into;
 use std::fmt::{self, Display, Formatter};
 use std::io;
 
-/// The error kind
+/// An error kind
 #[derive(Debug, Copy, Clone)]
 pub enum ErrorKind {
     API,
@@ -39,22 +38,22 @@ impl Error {
         Error { kind, description }
     }
 
-    /// Convenience function for creating errors with ErrorKind::API
+    /// Convenience function for creating errors with `ErrorKind::API`
     pub fn api_err(description: &str) -> Error {
         Error::new(ErrorKind::API, description.to_string())
     }
 
-    /// Convenience function for creating errors with ErrorKind::Other
+    /// Convenience function for creating errors with `ErrorKind::Other`
     pub fn other_err(description: &str) -> Error {
         Error::new(ErrorKind::Other, description.to_string())
     }
 
-    /// Convenience function for creating errors with ErrorKind::Serde
+    /// Convenience function for creating errors with `ErrorKind::Serde`
     pub fn serde_err(description: &str) -> Error {
         Error::new(ErrorKind::Serde, description.to_string())
     }
 
-    /// Convenience function for creating errors with ErrorKind::Request
+    /// Convenience function for creating errors with `ErrorKind::Request`
     pub fn request_err(description: &str) -> Error {
         Error::new(ErrorKind::Request, description.to_string())
     }
@@ -65,12 +64,12 @@ impl Error {
         self
     }
 
-    /// Returns this Error's kind
+    /// Returns this `Error`'s kind
     pub fn kind(&self) -> ErrorKind {
         self.kind
     }
 
-    /// Returns this Error's description
+    /// Returns this `Error`'s description
     pub fn description(&self) -> &String {
         &self.description
     }
@@ -92,8 +91,8 @@ impl From<APIError> for Error {
     }
 }
 
-impl From<SerdeError> for Error {
-    fn from(err: SerdeError) -> Error {
+impl From<::serde_json::Error> for Error {
+    fn from(err: ::serde_json::Error) -> Error {
         Error::serde_err(&err.to_string())
     }
 }

@@ -3,14 +3,14 @@
 [![downloads](https://img.shields.io/crates/d/rvk.svg?style=flat-square)](https://crates.io/crates/rvk)
 [![license](https://img.shields.io/crates/l/rvk.svg?style=flat-square)](https://github.com/u32i64/rvk/blob/master/LICENSE)
 
-A crate for accessing VK API in Rust.
+A crate for accessing VK API in Rust (synchronously).
 
 # Usage
 Add the dependency to your `Cargo.toml` file:
 
 ```toml
 [dependencies]
-rvk = "0.1"
+rvk = "0.2"
 ```
 
 Also, add this line to your crate:
