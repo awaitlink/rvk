@@ -17,8 +17,10 @@
 //!     let mut params = Params::new(); // Create a HashMap to store parameters
 //!     params.insert("user_ids", "1");
 //!
-//!     let work = users::get(&api, params, |res| match res {
-//!         Ok(v) => { // If the API returned a response, you get `serde_json::Value` here
+//!     let res = users::get(&api, params).expect("Error happened during request");
+//! 
+//!     match res {
+//!         Ok(v) => { // v is `serde_json::Value`
 //!
 //!             // In this example, `v` corresponds to this JSON:
 //!             // [
@@ -30,27 +32,21 @@
 //!             // ]
 //!
 //!             let user = v.as_array().unwrap().get(0).unwrap();
-//!
+//! 
 //!             let first_name = user.get("first_name").unwrap().as_str().unwrap();
 //!             let last_name = user.get("last_name").unwrap().as_str().unwrap();
 //!             let id = user.get("id").unwrap().as_u64().unwrap();
-//!
-//!             println!("Success: User #{} is {} {}.", id, first_name, last_name);
+//! 
+//!             println!("User #{} is {} {}.", id, first_name, last_name);
 //!         }
-//!         Err(e) => println!("Error {}: {}", e.code(), e.msg()),
-//!     }); // This returns a Future
-//!
-//!     api.run(work); // Do not forget to run the Future to make it actually do something!
+//!         Err(e) => println!("API Error {}: {}", e.code(), e.msg()),
+//!     };
 //! }
 //! ```
 
-extern crate futures;
 extern crate heck;
-extern crate hyper;
-extern crate hyper_tls;
+extern crate reqwest;
 extern crate serde_json;
-extern crate tokio_core;
-extern crate url;
 
 pub mod client;
 pub mod methods;
