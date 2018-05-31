@@ -35,7 +35,7 @@ macro_rules! api_method {
         pub fn $func_name(
             api: &::api::APIClient,
             params: ::Params,
-        ) -> Result<::api::APIResponse, ::std::io::Error> {
+        ) -> ::api::APIResponse {
             let method_name = $method_name;
             api.call_method(method_name, params)
         }

@@ -11,44 +11,51 @@
 //! extern crate rvk;
 //! use rvk::{APIClient, Params, methods::*};
 //!
+//! extern crate serde;
+//! #[macro_use]
+//! extern crate serde_derive;
+//! extern crate serde_json;
+//! use serde_json::from_value;
+//!
+//! #[derive(Deserialize)]
+//! struct User {
+//!     id: u64,
+//!     first_name: String,
+//!     last_name: String,
+//! }
+//!
 //! fn main() {
 //!     let mut api = APIClient::new("your_access_token").unwrap(); // Create an API Client
 //!
 //!     let mut params = Params::new(); // Create a HashMap to store parameters
 //!     params.insert("user_ids", "1");
 //!
-//!     let res = users::get(&api, params).expect("Error happened during request");
-//! 
+//!     let res = users::get(&api, params);
+//!
 //!     match res {
 //!         Ok(v) => { // v is `serde_json::Value`
+//!             let users: Vec<User> = from_value(v).unwrap();
+//!             let user = &users[0];
 //!
-//!             // In this example, `v` corresponds to this JSON:
-//!             // [
-//!             //   {
-//!             //     "id": 1,
-//!             //     "first_name": "Pavel",
-//!             //     "last_name": "Durov"
-//!             //   }
-//!             // ]
-//!
-//!             let user = v.as_array().unwrap().get(0).unwrap();
-//! 
-//!             let first_name = user.get("first_name").unwrap().as_str().unwrap();
-//!             let last_name = user.get("last_name").unwrap().as_str().unwrap();
-//!             let id = user.get("id").unwrap().as_u64().unwrap();
-//! 
-//!             println!("User #{} is {} {}.", id, first_name, last_name);
+//!             println!(
+//!                 "User #{} is {} {}.",
+//!                 user.id, user.first_name, user.last_name
+//!             );
 //!         }
-//!         Err(e) => println!("API Error {}: {}", e.code(), e.msg()),
+//!         Err(e) => println!("{}", e),
 //!     };
 //! }
 //! ```
 
 extern crate heck;
 extern crate reqwest;
+extern crate serde;
 extern crate serde_json;
+#[macro_use]
+extern crate serde_derive;
 
 pub mod api;
+pub mod error;
 pub mod methods;
 
 pub use api::APIClient;

@@ -15,4 +15,6 @@ maintenance = { status = "passively-maintained" }
 [dependencies]
 heck = "0.3"
 reqwest = "0.8"
+serde = "1.0"
 serde_json = "1.0"
+serde_derive = "1.0"
