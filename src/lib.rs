@@ -48,10 +48,10 @@ extern crate heck;
 extern crate reqwest;
 extern crate serde_json;
 
-pub mod client;
+pub mod api;
 pub mod methods;
 
-pub use client::APIClient;
+pub use api::APIClient;
 
 /// A HashMap which contains method parameters
 pub type Params<'a> = std::collections::HashMap<&'a str, &'a str>;
