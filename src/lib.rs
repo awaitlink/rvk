@@ -1,10 +1,10 @@
 #![doc(html_logo_url = "https://raw.githubusercontent.com/u32i64/rvk/master/logo.png")]
 
 //! # Overview
-//! This is a crate for accessing VK API.
+//! This is a crate for accessing VK API (synchronously).
 //!
-//! All of the API [methods](https://vk.com/dev/methods) are located in the `methods`
-//! [module](#modules) of this crate (in the corresponding submodules).
+//! All of the API [methods](https://vk.com/dev/methods) are located in the
+//! [`methods`](methods/index.html) module of this crate (in the corresponding submodules).
 //!
 //! # Example
 //! ```no_run
