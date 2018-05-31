@@ -1,13 +1,13 @@
 [package]
 name = "rvk"
-version = "0.2.2" # Don't forget about version in README.md!
+version = "0.2.3" # Don't forget about version in README.md!
 authors = ["Artem Varaksa <aymfst@gmail.com>"]
 readme = "README.md"
 license = "MIT"
 description = "Crate for accessing VK API"
 repository = "https://github.com/u32i64/rvk"
 keywords = ["vk", "api", "method"]
-categories = ["api-bindings", "asynchronous"]
+categories = ["api-bindings"]
 
 [dependencies]
 heck = "0.3"
