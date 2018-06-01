@@ -9,30 +9,47 @@ pub type Result<T> = StdResult<T, Error>;
 /// An error returned by the API
 #[derive(Deserialize, Debug)]
 pub struct APIError {
-    code: u64,
-    msg: String,
+    error_code: u64,
+    error_msg: String,
 }
 
 impl APIError {
     /// Creates a new `APIError`
     pub fn new(code: u64, msg: String) -> APIError {
-        APIError { code, msg }
+        APIError {
+            error_code: code,
+            error_msg: msg,
+        }
     }
 
     /// Returns the code of this `APIError`
+    ///
+    /// ```
+    /// use rvk::error::APIError;
+    ///
+    /// let err = APIError::new(0, "test".to_string());
+    /// assert_eq!(err.code(), 0);
+    /// ```
     pub fn code(&self) -> u64 {
-        self.code
+        self.error_code
     }
 
     /// Returns the message of this `APIError`
+    ///
+    /// ```
+    /// use rvk::error::APIError;
+    ///
+    /// let err = APIError::new(0, "test".to_string());
+    /// assert_eq!(err.msg(), "test");
+    /// ```
     pub fn msg(&self) -> &String {
-        &self.msg
+        &self.error_msg
     }
 }
 
 impl Display for APIError {
     fn fmt(&self, f: &mut Formatter) -> StdResult<(), fmt::Error> {
-        f.write_str(&format!("APIError #{}: {}", self.code(), self.msg()))
+        f.write_str(&format!("API Error #{}: {}", self.code(), self.msg()))
     }
 }
 
@@ -56,9 +73,12 @@ impl Display for Error {
     fn fmt(&self, f: &mut Formatter) -> StdResult<(), fmt::Error> {
         match self {
             Error::API(e) => e.fmt(f),
-            Error::Request(e) => e.fmt(f),
-            Error::Serde(e) => e.fmt(f),
-            Error::Other(s) => f.write_str(&s),
+            Error::Request(e) => f.write_str(&format!("Request error: {}", e.to_string())),
+            Error::Serde(e) => f.write_str(&format!(
+                "Serialization/Deserialization error: {}",
+                e.to_string()
+            )),
+            Error::Other(s) => f.write_str(&format!("Other error: {}", s)),
         }
     }
 }
