@@ -7,7 +7,7 @@ use std::result::Result as StdResult;
 pub type Result<T> = StdResult<T, Error>;
 
 /// An error returned by the API
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Eq, PartialEq, Clone)]
 pub struct APIError {
     error_code: u64,
     error_msg: String,
@@ -62,7 +62,7 @@ pub enum Error {
     /// Errors with making a request
     Request(::reqwest::Error),
 
-    /// Serde Errors
+    /// Serialization/Deserialization errors
     Serde(::serde_json::error::Error),
 
     /// Other errors
