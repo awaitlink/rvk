@@ -2,6 +2,7 @@
 
 use super::error::{APIError, Result};
 use super::Params;
+use super::API_VERSION;
 use reqwest::{Client, Response};
 use serde_json::{from_value, Map, Value};
 
@@ -24,7 +25,7 @@ impl<'a> APIClient<'a> {
         APIClient {
             client: Client::new(),
             token,
-            api_version: "5.78",
+            api_version: API_VERSION,
         }
     }
 

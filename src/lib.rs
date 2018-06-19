@@ -62,3 +62,6 @@ pub use api::APIClient;
 
 /// A HashMap which contains method parameters
 pub type Params<'a> = std::collections::HashMap<&'a str, &'a str>;
+
+/// Defines the version of VK API that is used
+pub const API_VERSION: &str = "5.80";
