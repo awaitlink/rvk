@@ -1,5 +1,6 @@
 use super::*;
 
+/// <https://vk.com/dev/objects/video>
 #[derive(Deserialize, Clone, Debug)]
 pub struct Video {
     pub id: Integer,

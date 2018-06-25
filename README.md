@@ -1,3 +1,6 @@
+# NOTE: `add-objects` branch
+Not all objects are added yet, and some may receive further tweaks before their release.
+
 # `rvk`
 [![version](https://img.shields.io/crates/v/rvk.svg?style=flat-square)](https://crates.io/crates/rvk)
 [![downloads](https://img.shields.io/crates/d/rvk.svg?style=flat-square)](https://crates.io/crates/rvk)
@@ -23,31 +26,19 @@ Now you can take a look at this crate's [API documentation](https://docs.rs/rvk)
 
 # Example
 
-To use this example, you will **also** need the following crates:
+To use this example, you will **also** need the `serde_json` crate to deserialize the API response:
 
 ```toml
 [dependencies]
-serde = "1.0"
 serde_json = "1.0"
-serde_derive = "1.0"
 ```
 
 ```rust
 extern crate rvk;
-use rvk::{methods::*, APIClient, Params};
-
-extern crate serde;
-#[macro_use]
-extern crate serde_derive;
 extern crate serde_json;
-use serde_json::from_value;
 
-#[derive(Deserialize)]
-struct User {
-    id: u64,
-    first_name: String,
-    last_name: String,
-}
+use rvk::{APIClient, Params, methods::*, objects};
+use serde_json::from_value;
 
 fn main() {
     let api = APIClient::new("your_access_token"); // Create an API Client
@@ -59,7 +50,7 @@ fn main() {
 
     match res {
         Ok(v) => { // v is `serde_json::Value`
-            let users: Vec<User> = from_value(v).unwrap();
+            let users: Vec<objects::User> = from_value(v).unwrap();
             let user = &users[0];
 
             println!(

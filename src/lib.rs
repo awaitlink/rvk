@@ -3,26 +3,23 @@
 //! # Overview
 //! This is a crate for accessing VK API (synchronously).
 //!
-//! All of the API [methods](https://vk.com/dev/methods) are located in the
-//! [`methods`](methods/index.html) module of this crate (in the corresponding submodules).
+//! It consists of:
+//!
+//! - **The** [`api`](api/index.html) **module**, which works with the API;
+//! - **API [methods](https://vk.com/dev/methods)** (in the
+//! [`methods`](methods/index.html) module);
+//! - **API [objects](https://vk.com/dev/objects)** (in the
+//! [`objects`](objects/index.html) module),
+//!
+//! which collectively make accessing the VK API a lot easier, as shown in the example below.
 //!
 //! # Example
 //! ```no_run
 //! extern crate rvk;
-//! use rvk::{APIClient, Params, methods::*};
-//!
-//! extern crate serde;
-//! #[macro_use]
-//! extern crate serde_derive;
 //! extern crate serde_json;
-//! use serde_json::from_value;
 //!
-//! #[derive(Deserialize)]
-//! struct User {
-//!     id: u64,
-//!     first_name: String,
-//!     last_name: String,
-//! }
+//! use rvk::{APIClient, Params, methods::*, objects};
+//! use serde_json::from_value;
 //!
 //! fn main() {
 //!     let mut api = APIClient::new("your_access_token"); // Create an API Client
@@ -34,7 +31,7 @@
 //!
 //!     match res {
 //!         Ok(v) => { // v is `serde_json::Value`
-//!             let users: Vec<User> = from_value(v).unwrap();
+//!             let users: Vec<objects::User> = from_value(v).unwrap();
 //!             let user = &users[0];
 //!
 //!             println!(
@@ -57,11 +54,10 @@ extern crate serde_derive;
 pub mod api;
 pub mod error;
 pub mod methods;
+pub mod objects;
 
 pub use api::APIClient;
-
-/// A HashMap which contains method parameters
-pub type Params<'a> = std::collections::HashMap<&'a str, &'a str>;
+pub use api::Params;
 
 /// Defines the version of VK API that is used
 pub const API_VERSION: &str = "5.80";

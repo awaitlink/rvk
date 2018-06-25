@@ -1,5 +1,6 @@
 use super::*;
 
+/// <https://vk.com/dev/objects/doc>
 #[derive(Deserialize, Clone, Debug)]
 pub struct Document {
     pub id: Integer,

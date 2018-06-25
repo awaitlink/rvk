@@ -6,15 +6,17 @@ pub type Integer = i64;
 /// The 'number' type that is used in all objects
 pub type Number = f64;
 
-// Main Objects
-pub mod user;
-pub mod poll;
+/// The 'boolean' type that is used in all objects
+pub type Boolean = bool;
 
-// Media Objects
+pub mod user;
+pub mod message;
+pub mod poll;
 pub mod photo;
 pub mod audio;
 pub mod video;
 pub mod document;
-
-// Extra Objects
+pub mod attachment;
+pub mod post_source;
 pub mod privacy;
+pub mod push_settings;

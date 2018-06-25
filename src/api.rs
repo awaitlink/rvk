@@ -1,10 +1,13 @@
 //! Works with the API
 
 use super::error::{APIError, Result};
-use super::Params;
+use std::collections::HashMap;
 use super::API_VERSION;
 use reqwest::{Client, Response};
 use serde_json::{from_value, Map, Value};
+
+/// A HashMap which contains method parameters
+pub type Params<'a> = HashMap<&'a str, &'a str>;
 
 /// An API response, which is either an actual response or an error
 pub type APIResponse = Result<Value>;

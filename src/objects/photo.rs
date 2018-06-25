@@ -1,5 +1,6 @@
 use super::*;
 
+/// <https://vk.com/dev/objects/photo>
 #[derive(Deserialize, Clone, Debug)]
 pub struct Photo {
     pub id: Integer,
@@ -13,11 +14,12 @@ pub struct Photo {
     pub height: Option<Integer>,
 }
 
+/// <https://vk.com/dev/photo_sizes>
 #[derive(Deserialize, Clone, Debug)]
 pub struct Size {
     pub url: String,
-    pub width: Integer,
-    pub height: Integer,
+    pub width: Option<Integer>,
+    pub height: Option<Integer>,
 
     #[serde(rename = "type")]
     pub type_: String,
