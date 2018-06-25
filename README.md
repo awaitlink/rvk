@@ -23,6 +23,15 @@ Now you can take a look at this crate's [API documentation](https://docs.rs/rvk)
 
 # Example
 
+To use this example, you will **also** need the following crates:
+
+```toml
+[dependencies]
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+```
+
 ```rust
 extern crate rvk;
 use rvk::{methods::*, APIClient, Params};
