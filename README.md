@@ -10,7 +10,7 @@ Add the dependency to your `Cargo.toml` file:
 
 ```toml
 [dependencies]
-rvk = "0.3"
+rvk = "0.4"
 ```
 
 Also, add this line to your crate:

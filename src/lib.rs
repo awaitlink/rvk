@@ -59,9 +59,7 @@ pub mod error;
 pub mod methods;
 
 pub use api::APIClient;
-
-/// A HashMap which contains method parameters
-pub type Params<'a> = std::collections::HashMap<&'a str, &'a str>;
+pub use api::Params;
 
 /// Defines the version of VK API that is used
 pub const API_VERSION: &str = "5.80";

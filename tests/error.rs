@@ -9,7 +9,7 @@ fn api_error() {
 
     match err {
         Error::API(e) => assert_eq!(e, api_err),
-        _ => unreachable!()
+        _ => unreachable!(),
     }
 }
 
@@ -20,7 +20,7 @@ fn other_error_from_str() {
 
     match err {
         Error::Other(s) => assert_eq!(s, other_err),
-        _ => unreachable!()
+        _ => unreachable!(),
     }
 }
 
@@ -31,6 +31,6 @@ fn other_error_from_string() {
 
     match err {
         Error::Other(s) => assert_eq!(s, other_err),
-        _ => unreachable!()
+        _ => unreachable!(),
     }
 }
