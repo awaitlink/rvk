@@ -9,14 +9,14 @@ pub type Number = f64;
 /// The 'boolean' type that is used in all objects
 pub type Boolean = bool;
 
-pub mod user;
-pub mod message;
-pub mod poll;
-pub mod photo;
-pub mod audio;
-pub mod video;
-pub mod document;
 pub mod attachment;
+pub mod audio;
+pub mod document;
+pub mod message;
+pub mod photo;
+pub mod poll;
 pub mod post_source;
 pub mod privacy;
 pub mod push_settings;
+pub mod user;
+pub mod video;

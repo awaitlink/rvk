@@ -1,5 +1,3 @@
-use super::*;
-
 /// <https://vk.com/dev/objects/push_settings>
 #[derive(Deserialize, Clone, Debug)]
 pub struct PushSettings {

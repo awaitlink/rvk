@@ -13,7 +13,7 @@ Add the dependency to your `Cargo.toml` file:
 
 ```toml
 [dependencies]
-rvk = "0.3"
+rvk = "0.4"
 ```
 
 Also, add this line to your crate:
@@ -37,7 +37,8 @@ serde_json = "1.0"
 extern crate rvk;
 extern crate serde_json;
 
-use rvk::{APIClient, Params, methods::*, objects};
+use rvk::objects::user::User;
+use rvk::{methods::*, APIClient, Params};
 use serde_json::from_value;
 
 fn main() {
@@ -50,7 +51,7 @@ fn main() {
 
     match res {
         Ok(v) => { // v is `serde_json::Value`
-            let users: Vec<objects::User> = from_value(v).unwrap();
+            let users: Vec<User> = from_value(v).unwrap();
             let user = &users[0];
 
             println!(

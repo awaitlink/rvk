@@ -1,10 +1,10 @@
 //! Works with the API
 
 use super::error::{APIError, Result};
-use std::collections::HashMap;
 use super::API_VERSION;
 use reqwest::{Client, Response};
 use serde_json::{from_value, Map, Value};
+use std::collections::HashMap;
 
 /// A HashMap which contains method parameters
 pub type Params<'a> = HashMap<&'a str, &'a str>;
