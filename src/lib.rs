@@ -5,11 +5,10 @@
 //!
 //! It consists of:
 //!
-//! - **The** [`api`](api/index.html) **module**, which works with the API;
-//! - **API [methods](https://vk.com/dev/methods)** (in the
-//! [`methods`](methods/index.html) module);
-//! - **API [objects](https://vk.com/dev/objects)** (in the
-//! [`objects`](objects/index.html) module),
+//! - [`api`](api/index.html) **module**, which works with the API;
+//! - [`error`](error/index.html) **module**, which handles errors that may occur during an API call;
+//! - [`methods`](methods/index.html) **module**, which contains **API [methods](https://vk.com/dev/methods)**;
+//! - [`objects`](objects/index.html) **module**, which contains **API [objects](https://vk.com/dev/objects)**,
 //!
 //! which collectively make accessing the VK API a lot easier, as shown in the example below.
 //!

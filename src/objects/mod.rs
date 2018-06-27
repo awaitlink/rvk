@@ -1,12 +1,12 @@
 //! Represents various objects that are returned as JSON by the API
 
-/// The 'integer' type that is used in all objects
+/// The 'integer' type that is used in objects
 pub type Integer = i64;
 
-/// The 'number' type that is used in all objects
+/// The 'number' type that is used in objects
 pub type Number = f64;
 
-/// The 'boolean' type that is used in all objects
+/// The 'boolean' type that is used in objects
 pub type Boolean = bool;
 
 pub mod attachment;
