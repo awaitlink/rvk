@@ -17,7 +17,6 @@ pub struct Video {
     pub can_edit: Option<Integer>,
     pub can_add: Integer,
     pub is_private: Option<Integer>,
-    pub access_key: String,
     pub processing: Option<Integer>,
     pub converting: Option<Integer>,
     pub live: Option<Integer>,
@@ -43,6 +42,14 @@ pub struct Video {
     pub repeat: Option<Integer>,
     pub privacy_view: Option<privacy::Privacy>,
     pub privacy_comment: Option<privacy::Privacy>,
+
+    /// Access key may be present in attachments
+    /// (
+    /// <https://vk.com/dev/objects/attachments_w>
+    /// or
+    /// <https://vk.com/dev/objects/attachments_m>
+    /// )
+    pub access_key: Option<String>,
 }
 
 #[derive(Deserialize, Clone, Debug)]
@@ -64,4 +71,46 @@ pub struct Files {
     pub mp4_480: Option<String>,
     pub mp4_720: Option<String>,
     pub mp4_1080: Option<String>,
+}
+
+/// <https://vk.com/dev/objects/video_cat_element>
+#[derive(Deserialize, Clone, Debug)]
+pub struct CatalogElement {
+    pub id: Integer,
+    pub owner_id: Integer,
+    pub title: String,
+
+    #[serde(rename = "type")]
+    pub type_: String,
+
+    pub description: Option<String>,
+    pub duration: Option<Integer>,
+    pub photo_130: Option<String>,
+    pub photo_160: Option<String>,
+    pub photo_320: Option<String>,
+    pub photo_640: Option<String>,
+    pub photo_800: Option<String>,
+    pub date: Option<Integer>,
+    pub adding_date: Option<Integer>,
+    pub views: Option<Integer>,
+    pub comments: Option<Integer>,
+    pub can_add: Option<Integer>,
+    pub can_edit: Option<Integer>,
+    pub is_private: Option<Integer>,
+    pub count: Option<Integer>,
+    pub updated_time: Option<Integer>,
+}
+
+/// <https://vk.com/dev/objects/video_cat_block>
+#[derive(Deserialize, Clone, Debug)]
+pub struct CatalogBlock {
+    pub items: Vec<CatalogElement>,
+    pub id: Integer,
+    pub name: String,
+    pub next: String,
+    pub view: String,
+    pub can_hide: Integer,
+
+    #[serde(rename = "type")]
+    pub type_: String,
 }

@@ -15,6 +15,14 @@ pub struct Document {
     pub type_: Integer,
 
     pub preview: DocumentPreview,
+
+    /// Access key may be present in attachments
+    /// (
+    /// <https://vk.com/dev/objects/attachments_w>
+    /// or
+    /// <https://vk.com/dev/objects/attachments_m>
+    /// )
+    pub access_key: Option<String>,
 }
 
 #[derive(Deserialize, Clone, Debug)]

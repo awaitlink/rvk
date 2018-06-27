@@ -15,4 +15,12 @@ pub struct Audio {
     pub date: Integer,
     pub no_search: Option<Integer>,
     pub is_hq: Option<Integer>,
+
+    /// Access key may be present in attachments
+    /// (
+    /// <https://vk.com/dev/objects/attachments_w>
+    /// or
+    /// <https://vk.com/dev/objects/attachments_m>
+    /// )
+    pub access_key: Option<String>,
 }
