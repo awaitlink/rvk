@@ -1,13 +1,13 @@
 //! All errors that can happen during a method call
 
-use std::fmt::{self, Display, Formatter};
 use std::result::Result as StdResult;
 
 /// Convenience type for defining `Result`s
 pub type Result<T> = StdResult<T, Error>;
 
 /// An error returned by the API
-#[derive(Deserialize, Debug, Eq, PartialEq, Clone)]
+#[derive(Fail, Deserialize, Debug, Eq, PartialEq, Clone)]
+#[fail(display = "API Error #{}: {}", error_code, error_msg)]
 pub struct APIError {
     error_code: u64,
     error_msg: String,
@@ -15,8 +15,8 @@ pub struct APIError {
 
 impl APIError {
     /// Creates a new `APIError`
-    pub fn new(code: u64, msg: String) -> APIError {
-        APIError {
+    pub fn new(code: u64, msg: String) -> Self {
+        Self {
             error_code: code,
             error_msg: msg,
         }
@@ -47,40 +47,24 @@ impl APIError {
     }
 }
 
-impl Display for APIError {
-    fn fmt(&self, f: &mut Formatter) -> StdResult<(), fmt::Error> {
-        f.write_str(&format!("API Error #{}: {}", self.code(), self.msg()))
-    }
-}
-
 /// A generic error
-#[derive(Debug)]
+#[derive(Fail, Debug)]
 pub enum Error {
     /// Errors from the API
-    API(APIError),
+    #[fail(display = "{}", _0)]
+    API(#[cause] APIError),
 
     /// Errors with making a request
-    Request(::reqwest::Error),
+    #[fail(display = "Request error: {}", _0)]
+    Request(#[cause] ::reqwest::Error),
 
     /// Serialization/Deserialization errors
-    Serde(::serde_json::error::Error),
+    #[fail(display = "Serialization/Deserialization error: {}", _0)]
+    Serde(#[cause] ::serde_json::error::Error),
 
     /// Other errors
+    #[fail(display = "Other error: {}", _0)]
     Other(String),
-}
-
-impl Display for Error {
-    fn fmt(&self, f: &mut Formatter) -> StdResult<(), fmt::Error> {
-        match self {
-            Error::API(e) => e.fmt(f),
-            Error::Request(e) => f.write_str(&format!("Request error: {}", e.to_string())),
-            Error::Serde(e) => f.write_str(&format!(
-                "Serialization/Deserialization error: {}",
-                e.to_string()
-            )),
-            Error::Other(s) => f.write_str(&format!("Other error: {}", s)),
-        }
-    }
 }
 
 impl From<APIError> for Error {
@@ -110,5 +94,43 @@ impl From<String> for Error {
 impl From<&'static str> for Error {
     fn from(s: &'static str) -> Error {
         s.to_string().into()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn api_error() {
+        let api_err = APIError::new(0, "test".to_string());
+        let err: Error = api_err.clone().into();
+
+        match err {
+            Error::API(e) => assert_eq!(e, api_err),
+            _ => unreachable!(),
+        }
+    }
+
+    #[test]
+    fn other_error_from_str() {
+        let other_err = "error";
+        let err: Error = other_err.clone().into();
+
+        match err {
+            Error::Other(s) => assert_eq!(s, other_err),
+            _ => unreachable!(),
+        }
+    }
+
+    #[test]
+    fn other_error_from_string() {
+        let other_err = "error".to_string();
+        let err: Error = other_err.clone().into();
+
+        match err {
+            Error::Other(s) => assert_eq!(s, other_err),
+            _ => unreachable!(),
+        }
     }
 }
