@@ -3,6 +3,12 @@
 //! ## Note: `type` fields
 //!
 //! Since `type` is a Rust keyword, all `type` fields are named `type_` (**with the underscore!**)
+//!
+//! ## Note
+//!
+//! Due to the nature of the VK API documentation, it is not always clear if the value is always passed or not, and sometimes the data type is not defined.
+//!
+//! If you spot any mistakes or bugs, please [report them](https://github.com/u32i64/rvk/issues)!
 
 /// The 'integer' type that is used in objects
 pub type Integer = i64;
