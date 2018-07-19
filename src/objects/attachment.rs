@@ -28,7 +28,7 @@ pub struct WallAttachment {
     pub link: Option<link::Link>,
 
     // type = note
-    // TODO: pub note: Option<?>,
+    pub note: Option<note::Note>,
 
     // type = app
     pub app: Option<App>,
@@ -37,7 +37,7 @@ pub struct WallAttachment {
     pub poll: Option<poll::Poll>,
 
     // type = page
-    // TODO: pub page: Option<?>,
+    pub page: Option<page::Page>,
 
     // type = album
     pub album: Option<photo::Album>,
@@ -46,10 +46,10 @@ pub struct WallAttachment {
     pub photos_list: Option<Vec<String>>,
 
     // type = market
-    // TODO: pub market: Option<?>,
+    pub market: Option<market_item::MarketItem>,
 
     // type = market_album
-    // TODO: pub market_album: Option<?>,
+    pub market_album: Option<market_album::MarketAlbum>,
 
     // type = sticker
     pub sticker: Option<sticker::Sticker>,
@@ -109,7 +109,6 @@ pub struct App {
     pub access_key: Option<String>,
 }
 
-///
 #[derive(Deserialize, Clone, Debug)]
 pub struct Card {
     pub card_id: String,
@@ -124,5 +123,39 @@ pub struct Card {
 /// <https://vk.com/dev/objects/attachments_m>
 #[derive(Deserialize, Clone, Debug)]
 pub struct MessageAttachment {
-    // TODO: Implement
+    #[serde(rename = "type")]
+    pub type_: String,
+
+    // type = photo
+    pub photo: Option<photo::Photo>,
+
+    // type = video
+    pub video: Option<video::Video>,
+
+    // type = audio
+    pub audio: Option<audio::Audio>,
+
+    // type = doc
+    pub doc: Option<document::Document>,
+
+    // type = link
+    pub link: Option<link::Link>,
+
+    // type = market
+    pub market: Option<market_item::MarketItem>,
+
+    // type = market_album
+    pub market_album: Option<market_album::MarketAlbum>,
+
+    // type = wall
+    pub wall: Option<post::Post>,
+
+    // type = wall_reply
+    pub wall_reply: Option<comment::Comment>,
+
+    // type = sticker
+    pub sticker: Option<sticker::Sticker>,
+
+    // type = gift
+    pub gift: Option<gift::Gift>,
 }

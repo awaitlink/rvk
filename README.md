@@ -1,6 +1,3 @@
-# NOTE: `add-objects` branch
-Not all **objects** are added yet, and some may receive further tweaks before their release.
-
 # `rvk`
 [![version][badges/version]][crates.io/rvk]
 [![downloads][badges/downloads]][crates.io/rvk]
@@ -44,15 +41,14 @@ serde_json = "1.0"
 extern crate rvk;
 extern crate serde_json;
 
-use rvk::objects::user::User;
-use rvk::{methods::*, APIClient, Params};
+use rvk::{methods::*, objects::user::User, APIClient, Params};
 use serde_json::from_value;
 
 fn main() {
-    let api = APIClient::new("your_access_token"); // Create an API Client
+    let api = APIClient::new("your_access_token".into()); // Create an API Client
 
     let mut params = Params::new(); // Create a HashMap to store parameters
-    params.insert("user_ids", "1");
+    params.insert("user_ids".into(), "1".into());
 
     let res = users::get(&api, params);
 
@@ -78,9 +74,9 @@ fn main() {
 
 [license]: https://github.com/u32i64/rvk/blob/master/LICENSE
 
-[badges/version]: https://img.shields.io/crates/v/rvk.svg?style=flat-square
-[badges/downloads]: https://img.shields.io/crates/d/rvk.svg?style=flat-square
-[badges/license]: https://img.shields.io/crates/l/rvk.svg?style=flat-square
+[badges/version]: https://img.shields.io/crates/v/rvk.svg?style=for-the-badge
+[badges/downloads]: https://img.shields.io/crates/d/rvk.svg?style=for-the-badge
+[badges/license]: https://img.shields.io/crates/l/rvk.svg?style=for-the-badge
 
 [modules/api]: https://docs.rs/rvk/*/rvk/api/index.html
 [modules/error]: https://docs.rs/rvk/*/rvk/error/index.html

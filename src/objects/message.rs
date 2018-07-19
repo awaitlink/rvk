@@ -34,3 +34,15 @@ pub struct Photo {
     pub photo_100: String,
     pub photo_200: String,
 }
+
+/// <https://vk.com/dev/objects/pinned_message>
+#[derive(Deserialize, Clone, Debug)]
+pub struct Pinned {
+    pub id: Integer,
+    pub date: Integer,
+    pub from_id: Integer,
+    pub text: Option<String>,
+    pub attachments: Option<Vec<attachment::MessageAttachment>>,
+    pub geo: Option<geo::Geo>,
+    pub fwd_messages: Option<Vec<Message>>,
+}

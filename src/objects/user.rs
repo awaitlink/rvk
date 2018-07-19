@@ -24,7 +24,7 @@ pub struct User {
     pub can_send_friend_request: Option<Integer>,
     pub can_write_private_message: Option<Integer>,
     pub career: Option<Vec<Career>>,
-    pub city: Option<City>,
+    pub city: Option<geo::City>,
     pub common_count: Option<Integer>,
 
     // connections
@@ -37,7 +37,7 @@ pub struct User {
 
     pub contacts: Option<Contacts>,
     pub counters: Option<Counters>,
-    pub country: Option<Country>,
+    pub country: Option<geo::Country>,
     pub crop_photo: Option<photo::Cropped>,
     pub domain: Option<String>,
 
@@ -139,12 +139,6 @@ pub struct Career {
 }
 
 #[derive(Deserialize, Clone, Debug)]
-pub struct City {
-    pub id: Option<Integer>,
-    pub title: Option<String>,
-}
-
-#[derive(Deserialize, Clone, Debug)]
 pub struct Contacts {
     pub mobile_phone: Option<String>,
     pub home_phone: Option<String>,
@@ -164,12 +158,6 @@ pub struct Counters {
     pub user_videos: Option<Integer>,
     pub followers: Option<Integer>,
     pub pages: Option<Integer>,
-}
-
-#[derive(Deserialize, Clone, Debug)]
-pub struct Country {
-    pub id: Option<Integer>,
-    pub title: Option<String>,
 }
 
 #[derive(Deserialize, Copy, Clone, Debug)]

@@ -17,6 +17,18 @@ pub struct Coordinates {
 }
 
 #[derive(Deserialize, Clone, Debug)]
+pub struct City {
+    pub id: Option<Integer>,
+    pub title: Option<String>,
+}
+
+#[derive(Deserialize, Clone, Debug)]
+pub struct Country {
+    pub id: Option<Integer>,
+    pub title: Option<String>,
+}
+
+#[derive(Deserialize, Clone, Debug)]
 pub struct Place {
     pub id: Option<Integer>,
     pub title: Option<String>,
