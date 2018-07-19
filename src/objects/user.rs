@@ -1,7 +1,5 @@
 use super::*;
 
-// TODO: Option<>
-
 /// <https://vk.com/dev/objects/user>
 #[derive(Deserialize, Clone, Debug)]
 pub struct User {
