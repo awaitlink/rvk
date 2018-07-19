@@ -3,32 +3,28 @@
 //! # Overview
 //! This is a crate for accessing VK API (synchronously).
 //!
-//! All of the API [methods](https://vk.com/dev/methods) are located in the
-//! [`methods`](methods/index.html) module of this crate (in the corresponding submodules).
+//! It consists of:
+//!
+//! - [`api`](api/index.html) **module**, which works with the API;
+//! - [`error`](error/index.html) **module**, which handles errors that may occur during an API call;
+//! - [`methods`](methods/index.html) **module**, which contains **API [methods](https://vk.com/dev/methods)**;
+//! - [`objects`](objects/index.html) **module**, which contains **API [objects](https://vk.com/dev/objects)**,
+//!
+//! which collectively make accessing the VK API easy, as shown in the example below.
 //!
 //! # Example
 //! ```no_run
 //! extern crate rvk;
-//! use rvk::{APIClient, Params, methods::*};
-//!
-//! extern crate serde;
-//! #[macro_use]
-//! extern crate serde_derive;
 //! extern crate serde_json;
+//!
+//! use rvk::{methods::*, objects::user::User, APIClient, Params};
 //! use serde_json::from_value;
 //!
-//! #[derive(Deserialize)]
-//! struct User {
-//!     id: u64,
-//!     first_name: String,
-//!     last_name: String,
-//! }
-//!
 //! fn main() {
-//!     let mut api = APIClient::new("your_access_token"); // Create an API Client
+//!     let mut api = APIClient::new("your_access_token".into()); // Create an API Client
 //!
 //!     let mut params = Params::new(); // Create a HashMap to store parameters
-//!     params.insert("user_ids", "1");
+//!     params.insert("user_ids".into(), "1".into());
 //!
 //!     let res = users::get(&api, params);
 //!
@@ -53,10 +49,14 @@ extern crate serde;
 extern crate serde_json;
 #[macro_use]
 extern crate serde_derive;
+extern crate failure;
+#[macro_use]
+extern crate failure_derive;
 
 pub mod api;
 pub mod error;
 pub mod methods;
+pub mod objects;
 
 pub use api::APIClient;
 pub use api::Params;
