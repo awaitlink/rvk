@@ -3,14 +3,16 @@
 [![downloads][badges/downloads]][crates.io/rvk]
 [![license][badges/license]][license]
 
-A crate for accessing VK API in Rust (synchronously).
+> A crate for accessing VK API in Rust (synchronously).
+
+Changelog is available [here][changelog].
 
 # Modules
 
 - [`api`][modules/api] - works with the API;
 - [`error`][modules/error] - handles errors that may occur during an API call;
 - [`methods`][modules/methods] - contains **API [methods][vk/methods]**;
-- [`objects`][modules/objects] - contains **API [objects][vk/objects]**.
+- [`objects`][modules/objects] - contains **API [objects][vk/objects]**. See also [note about objects](#objects).
 
 # Usage
 Add the dependency to your `Cargo.toml` file:
@@ -67,12 +69,21 @@ fn main() {
 }
 ```
 
+# Notes
+### Objects
+Due to the nature of the VK API documentation, it is not always clear if the value is always passed or not, and sometimes the data type is not defined.
+
+If you spot any mistakes or bugs, please [report them][issues]!
+
 [crates.io/rvk]: https://crates.io/crates/rvk
 [crates.io/serde_json]: https://crates.io/crates/serde_json
 
 [docs.rs/rvk]: https://docs.rs/rvk
 
 [license]: https://github.com/u32i64/rvk/blob/master/LICENSE
+[changelog]: https://github.com/u32i64/rvk/blob/master/CHANGELOG.md
+
+[issues]: https://github.com/u32i64/rvk/issues
 
 [badges/version]: https://img.shields.io/crates/v/rvk.svg?style=for-the-badge
 [badges/downloads]: https://img.shields.io/crates/d/rvk.svg?style=for-the-badge
