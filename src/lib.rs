@@ -62,4 +62,4 @@ pub use api::APIClient;
 pub use api::Params;
 
 /// Defines the version of VK API that is used
-pub const API_VERSION: &str = "5.84";
+pub const API_VERSION: &str = "5.85";

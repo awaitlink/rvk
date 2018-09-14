@@ -31,7 +31,6 @@ pub struct App {
     pub is_in_catalog: Integer,
     pub friends: Option<Vec<Integer>>,
     pub installed: Option<Integer>,
-    pub is_html5_app: Option<Integer>,
     pub screen_orientation: Integer,
 
     // Optional fields
