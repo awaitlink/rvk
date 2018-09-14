@@ -28,6 +28,8 @@ pub struct Post {
     pub can_pin: Integer,
     pub can_delete: Integer,
     pub can_edit: Integer,
+    pub can_open: Boolean,
+    pub can_close: Boolean,
     pub is_pinned: Integer,
     pub marked_as_ads: Integer,
 }
