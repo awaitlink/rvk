@@ -45,4 +45,5 @@ pub struct ChatSettings {
     pub state: String,
     pub photo: message::Photo,
     pub active_ids: Vec<Integer>,
+    pub is_group_channel: Boolean,
 }
