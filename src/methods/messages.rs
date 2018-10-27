@@ -22,6 +22,7 @@ api_method!(get_invite_link);
 api_method!(get_last_activity);
 api_method!(get_long_poll_history);
 api_method!(get_long_poll_server);
+api_method!(get_recent_calls);
 api_method!(is_messages_from_group_allowed);
 api_method!(join_chat_by_invite_link);
 api_method!(mark_as_answered_conversation);
