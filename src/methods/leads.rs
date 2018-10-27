@@ -1,8 +1,8 @@
-api_category!("leads");
-
-api_method!(check_user);
-api_method!(complete);
-api_method!(get_stats);
-api_method!(get_users);
-api_method!(metric_hit);
-api_method!(start);
+api_category!("leads"; methods {
+    check_user,
+    complete,
+    get_stats,
+    get_users,
+    metric_hit,
+    start
+});

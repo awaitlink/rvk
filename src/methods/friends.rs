@@ -1,20 +1,20 @@
-api_category!("friends");
-
-api_method!(add);
-api_method!(add_list);
-api_method!(are_friends);
-api_method!(delete);
-api_method!(delete_all_requests);
-api_method!(delete_list);
-api_method!(edit);
-api_method!(edit_list);
-api_method!(get);
-api_method!(get_app_users);
-api_method!(get_by_phones);
-api_method!(get_lists);
-api_method!(get_mutual);
-api_method!(get_online);
-api_method!(get_recent);
-api_method!(get_requests);
-api_method!(get_suggestions);
-api_method!(search);
+api_category!("friends"; methods {
+    add,
+    add_list,
+    are_friends,
+    delete,
+    delete_all_requests,
+    delete_list,
+    edit,
+    edit_list,
+    get,
+    get_app_users,
+    get_by_phones,
+    get_lists,
+    get_mutual,
+    get_online,
+    get_recent,
+    get_requests,
+    get_suggestions,
+    search
+});

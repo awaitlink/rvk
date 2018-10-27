@@ -34,7 +34,8 @@ impl APIClient {
         params.insert("v".into(), API_VERSION.into());
         params.insert("access_token".into(), self.token.clone());
 
-        let response_result: Result<Response> = self.client
+        let response_result: Result<Response> = self
+            .client
             .get(&("https://api.vk.com/method/".to_owned() + method_name))
             .query(&params)
             .send()

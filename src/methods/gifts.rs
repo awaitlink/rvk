@@ -1,3 +1,3 @@
-api_category!("gifts");
-
-api_method!(get);
+api_category!("gifts"; methods {
+    get
+});

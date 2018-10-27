@@ -1,3 +1,3 @@
-api_category!("search");
-
-api_method!(get_hints);
+api_category!("search"; methods {
+    get_hints
+});

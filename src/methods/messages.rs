@@ -1,40 +1,40 @@
-api_category!("messages");
-
-api_method!(add_chat_user);
-api_method!(allow_messages_from_group);
-api_method!(create_chat);
-api_method!(delete);
-api_method!(delete_chat_photo);
-api_method!(delete_conversation);
-api_method!(deny_messages_from_group);
-api_method!(edit);
-api_method!(edit_chat);
-api_method!(get_by_conversation_message_id);
-api_method!(get_by_id);
-api_method!(get_chat);
-api_method!(get_chat_preview);
-api_method!(get_conversation_members);
-api_method!(get_conversations);
-api_method!(get_conversations_by_id);
-api_method!(get_history);
-api_method!(get_history_attachments);
-api_method!(get_invite_link);
-api_method!(get_last_activity);
-api_method!(get_long_poll_history);
-api_method!(get_long_poll_server);
-api_method!(get_recent_calls);
-api_method!(is_messages_from_group_allowed);
-api_method!(join_chat_by_invite_link);
-api_method!(mark_as_answered_conversation);
-api_method!(mark_as_important);
-api_method!(mark_as_important_conversation);
-api_method!(mark_as_read);
-api_method!(pin);
-api_method!(remove_chat_user);
-api_method!(restore);
-api_method!(search);
-api_method!(search_conversations);
-api_method!(send);
-api_method!(set_activity);
-api_method!(set_chat_photo);
-api_method!(unpin);
+api_category!("messages"; methods {
+    add_chat_user,
+    allow_messages_from_group,
+    create_chat,
+    delete,
+    delete_chat_photo,
+    delete_conversation,
+    deny_messages_from_group,
+    edit,
+    edit_chat,
+    get_by_conversation_message_id,
+    get_by_id,
+    get_chat,
+    get_chat_preview,
+    get_conversation_members,
+    get_conversations,
+    get_conversations_by_id,
+    get_history,
+    get_history_attachments,
+    get_invite_link,
+    get_last_activity,
+    get_long_poll_history,
+    get_long_poll_server,
+    get_recent_calls,
+    is_messages_from_group_allowed,
+    join_chat_by_invite_link,
+    mark_as_answered_conversation,
+    mark_as_important,
+    mark_as_important_conversation,
+    mark_as_read,
+    pin,
+    remove_chat_user,
+    restore,
+    search,
+    search_conversations,
+    send,
+    set_activity,
+    set_chat_photo,
+    unpin
+});

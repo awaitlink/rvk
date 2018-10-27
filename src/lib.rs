@@ -52,6 +52,8 @@ extern crate serde_derive;
 extern crate failure;
 #[macro_use]
 extern crate failure_derive;
+#[macro_use]
+extern crate lazy_static;
 
 pub mod api;
 pub mod error;

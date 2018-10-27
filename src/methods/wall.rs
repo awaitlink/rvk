@@ -1,22 +1,22 @@
-api_category!("wall");
-
-api_method!(create_comment);
-api_method!(delete);
-api_method!(delete_comment);
-api_method!(edit);
-api_method!(edit_ads_stealth);
-api_method!(edit_comment);
-api_method!(get);
-api_method!(get_by_id);
-api_method!(get_comments);
-api_method!(get_reposts);
-api_method!(pin);
-api_method!(post);
-api_method!(post_ads_stealth);
-api_method!(report_comment);
-api_method!(report_post);
-api_method!(repost);
-api_method!(restore);
-api_method!(restore_comment);
-api_method!(search);
-api_method!(unpin);
+api_category!("wall"; methods {
+    create_comment,
+    delete,
+    delete_comment,
+    edit,
+    edit_ads_stealth,
+    edit_comment,
+    get,
+    get_by_id,
+    get_comments,
+    get_reposts,
+    pin,
+    post,
+    post_ads_stealth,
+    report_comment,
+    report_post,
+    repost,
+    restore,
+    restore_comment,
+    search,
+    unpin
+});

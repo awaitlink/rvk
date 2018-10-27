@@ -1,43 +1,43 @@
-api_category!("groups");
-
-api_method!(add_callback_server);
-api_method!(add_link);
-api_method!(approve_request);
-api_method!(ban);
-api_method!(create);
-api_method!(delete_callback_server);
-api_method!(delete_link);
-api_method!(disable_online);
-api_method!(edit);
-api_method!(edit_callback_server);
-api_method!(edit_link);
-api_method!(edit_manager);
-api_method!(edit_place);
-api_method!(enable_online);
-api_method!(get);
-api_method!(get_banned);
-api_method!(get_by_id);
-api_method!(get_callback_confirmation_code);
-api_method!(get_callback_servers);
-api_method!(get_callback_settings);
-api_method!(get_catalog);
-api_method!(get_catalog_info);
-api_method!(get_invited_users);
-api_method!(get_invites);
-api_method!(get_long_poll_server);
-api_method!(get_long_poll_settings);
-api_method!(get_members);
-api_method!(get_online_status);
-api_method!(get_requests);
-api_method!(get_settings);
-api_method!(get_token_permissions);
-api_method!(invite);
-api_method!(is_member);
-api_method!(join);
-api_method!(leave);
-api_method!(remove_user);
-api_method!(reorder_link);
-api_method!(search);
-api_method!(set_callback_settings);
-api_method!(set_long_poll_settings);
-api_method!(unban);
+api_category!("groups"; methods {
+    add_callback_server,
+    add_link,
+    approve_request,
+    ban,
+    create,
+    delete_callback_server,
+    delete_link,
+    disable_online,
+    edit,
+    edit_callback_server,
+    edit_link,
+    edit_manager,
+    edit_place,
+    enable_online,
+    get,
+    get_banned,
+    get_by_id,
+    get_callback_confirmation_code,
+    get_callback_servers,
+    get_callback_settings,
+    get_catalog,
+    get_catalog_info,
+    get_invited_users,
+    get_invites,
+    get_long_poll_server,
+    get_long_poll_settings,
+    get_members,
+    get_online_status,
+    get_requests,
+    get_settings,
+    get_token_permissions,
+    invite,
+    is_member,
+    join,
+    leave,
+    remove_user,
+    reorder_link,
+    search,
+    set_callback_settings,
+    set_long_poll_settings,
+    unban
+});

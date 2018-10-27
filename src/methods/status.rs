@@ -1,4 +1,4 @@
-api_category!("status");
-
-api_method!(get);
-api_method!(set);
+api_category!("status"; methods {
+    get,
+    set
+});

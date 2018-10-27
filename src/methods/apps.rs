@@ -1,9 +1,9 @@
-api_category!("apps");
-
-api_method!(delete_app_requests);
-api_method!(get);
-api_method!(get_catalog);
-api_method!(get_friends_list);
-api_method!(get_leaderboard);
-api_method!(get_score);
-api_method!(send_request);
+api_category!("apps"; methods {
+    delete_app_requests,
+    get,
+    get_catalog,
+    get_friends_list,
+    get_leaderboard,
+    get_score,
+    send_request
+});

@@ -1,6 +1,6 @@
 [package]
 name = "rvk"
-version = "0.6.0" # Don't forget about version in README.md!
+version = "0.7.0" # Don't forget about version in README.md!
 authors = ["Artem Varaksa <aymfst@gmail.com>"]
 readme = "README.md"
 license = "MIT"
@@ -11,9 +11,10 @@ categories = ["api-bindings"]
 
 [dependencies]
 heck = "0.3"
-reqwest = "0.8"
+reqwest = "0.9"
 serde = "1.0"
 serde_json = "1.0"
 serde_derive = "1.0"
 failure = "0.1.1"
 failure_derive = "0.1.1"
+lazy_static = "1.1.0"

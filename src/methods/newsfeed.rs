@@ -1,17 +1,17 @@
-api_category!("newsfeed");
-
-api_method!(add_ban);
-api_method!(delete_ban);
-api_method!(delete_list);
-api_method!(get);
-api_method!(get_banned);
-api_method!(get_comments);
-api_method!(get_lists);
-api_method!(get_mentions);
-api_method!(get_recommended);
-api_method!(get_suggested_sources);
-api_method!(ignore_item);
-api_method!(save_list);
-api_method!(search);
-api_method!(unignore_item);
-api_method!(unsubscribe);
+api_category!("newsfeed"; methods {
+    add_ban,
+    delete_ban,
+    delete_list,
+    get,
+    get_banned,
+    get_comments,
+    get_lists,
+    get_mentions,
+    get_recommended,
+    get_suggested_sources,
+    ignore_item,
+    save_list,
+    search,
+    unignore_item,
+    unsubscribe
+});

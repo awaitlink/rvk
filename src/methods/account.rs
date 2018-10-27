@@ -1,21 +1,21 @@
-api_category!("account");
-
-api_method!(ban);
-api_method!(change_password);
-api_method!(get_active_offers);
-api_method!(get_app_permissions);
-api_method!(get_banned);
-api_method!(get_counters);
-api_method!(get_info);
-api_method!(get_profile_info);
-api_method!(get_push_settings);
-api_method!(register_device);
-api_method!(save_profile_info);
-api_method!(set_info);
-api_method!(set_name_in_menu);
-api_method!(set_offline);
-api_method!(set_online);
-api_method!(set_push_settings);
-api_method!(set_silence_mode);
-api_method!(unban);
-api_method!(unregister_device);
+api_category!("account"; methods {
+    ban,
+    change_password,
+    get_active_offers,
+    get_app_permissions,
+    get_banned,
+    get_counters,
+    get_info,
+    get_profile_info,
+    get_push_settings,
+    register_device,
+    save_profile_info,
+    set_info,
+    set_name_in_menu,
+    set_offline,
+    set_online,
+    set_push_settings,
+    set_silence_mode,
+    unban,
+    unregister_device
+});

@@ -1,10 +1,10 @@
-api_category!("pages");
-
-api_method!(clear_cache);
-api_method!(get);
-api_method!(get_history);
-api_method!(get_titles);
-api_method!(get_version);
-api_method!(parse_wiki);
-api_method!(save);
-api_method!(save_access);
+api_category!("pages"; methods {
+    clear_cache,
+    get,
+    get_history,
+    get_titles,
+    get_version,
+    parse_wiki,
+    save,
+    save_access
+});

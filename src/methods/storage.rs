@@ -1,5 +1,5 @@
-api_category!("storage");
-
-api_method!(get);
-api_method!(get_keys);
-api_method!(set);
+api_category!("storage"; methods {
+    get,
+    get_keys,
+    set
+});

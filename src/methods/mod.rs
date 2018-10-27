@@ -12,22 +12,38 @@
 //! ## Note: `photos.move`
 //! Since `move` is a Rust keyword, the function for calling `photos.move` API method is `rvk::methods::photos::move_` (**with the underscore!**)
 
-/// Defines an API method category
 macro_rules! api_category {
-    ($name:expr) => {
+    ($category:expr; methods { $($name:ident),* }) => {
         use heck::MixedCase;
-        const CATEGORY: &str = $name;
+        use std::collections::HashMap;
+        const CATEGORY: &str = $category;
+
+        lazy_static! {
+            static ref METHOD_NAMES: HashMap<&'static str, String> = {
+                let mut m = HashMap::new();
+
+                $(
+                    m.insert(stringify!($name), CATEGORY.to_owned() + "." + &stringify!($name).to_mixed_case());
+                )*
+
+                m
+            };
+        }
+
+        $(
+            api_method!(
+                $name,
+                METHOD_NAMES
+                    .get(stringify!($name))
+                    .expect(&format!("No method with name {} found in METHOD_NAMES.
+This is a bug.
+Please report it at < https://github.com/u32i64/rvk >", stringify!($name)))
+            );
+        )*
     };
 }
 
-/// A macro which creates a default function that calls a specified VK API method
 macro_rules! api_method {
-    ($name:ident) => {
-        api_method!(
-            $name,
-            &(CATEGORY.to_owned() + "." + &stringify!($name).to_mixed_case())
-        );
-    };
     ($func_name:ident, $method_name:expr) => {
         /// [generated] Calls the corresponding VK API method
         ///

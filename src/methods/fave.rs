@@ -1,14 +1,14 @@
-api_category!("fave");
-
-api_method!(add_group);
-api_method!(add_link);
-api_method!(add_user);
-api_method!(get_links);
-api_method!(get_market_items);
-api_method!(get_photos);
-api_method!(get_posts);
-api_method!(get_users);
-api_method!(get_videos);
-api_method!(remove_group);
-api_method!(remove_link);
-api_method!(remove_user);
+api_category!("fave"; methods {
+    add_group,
+    add_link,
+    add_user,
+    get_links,
+    get_market_items,
+    get_photos,
+    get_posts,
+    get_users,
+    get_videos,
+    remove_group,
+    remove_link,
+    remove_user
+});

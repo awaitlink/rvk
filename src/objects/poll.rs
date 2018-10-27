@@ -45,7 +45,7 @@ pub struct Background {
     pub width: Option<Integer>,
     pub height: Option<Integer>,
     pub images: Option<photo::Size>,
-    pub points: Option<GradientPoint>
+    pub points: Option<GradientPoint>,
 }
 
 #[derive(Deserialize, Clone, Debug)]

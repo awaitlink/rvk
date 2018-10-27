@@ -1,13 +1,13 @@
-api_category!("docs");
-
-api_method!(add);
-api_method!(delete);
-api_method!(edit);
-api_method!(get);
-api_method!(get_by_id);
-api_method!(get_messages_upload_server);
-api_method!(get_types);
-api_method!(get_upload_server);
-api_method!(get_wall_upload_server);
-api_method!(save);
-api_method!(search);
+api_category!("docs"; methods {
+    add,
+    delete,
+    edit,
+    get,
+    get_by_id,
+    get_messages_upload_server,
+    get_types,
+    get_upload_server,
+    get_wall_upload_server,
+    save,
+    search
+});

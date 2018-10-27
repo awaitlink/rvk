@@ -1,48 +1,49 @@
-api_category!("photos");
+api_category!("photos"; methods {
+    confirm_tag,
+    copy,
+    create_album,
+    create_comment,
+    delete,
+    delete_album,
+    delete_comment,
+    edit,
+    edit_album,
+    edit_comment,
+    get,
+    get_albums,
+    get_albums_count,
+    get_all,
+    get_all_comments,
+    get_by_id,
+    get_chat_upload_server,
+    get_comments,
+    get_market_album_upload_server,
+    get_market_upload_server,
+    get_messages_upload_server,
+    get_new_tags,
+    get_owner_cover_photo_upload_server,
+    get_owner_photo_upload_server,
+    get_tags,
+    get_upload_server,
+    get_user_photos,
+    get_wall_upload_server,
+    make_cover,
+    put_tag,
+    remove_tag,
+    reorder_albums,
+    reorder_photos,
+    report,
+    report_comment,
+    restore,
+    restore_comment,
+    save,
+    save_market_album_photo,
+    save_market_photo,
+    save_messages_photo,
+    save_owner_cover_photo,
+    save_owner_photo,
+    save_wall_photo,
+    search
+});
 
-api_method!(confirm_tag);
-api_method!(copy);
-api_method!(create_album);
-api_method!(create_comment);
-api_method!(delete);
-api_method!(delete_album);
-api_method!(delete_comment);
-api_method!(edit);
-api_method!(edit_album);
-api_method!(edit_comment);
-api_method!(get);
-api_method!(get_albums);
-api_method!(get_albums_count);
-api_method!(get_all);
-api_method!(get_all_comments);
-api_method!(get_by_id);
-api_method!(get_chat_upload_server);
-api_method!(get_comments);
-api_method!(get_market_album_upload_server);
-api_method!(get_market_upload_server);
-api_method!(get_messages_upload_server);
-api_method!(get_new_tags);
-api_method!(get_owner_cover_photo_upload_server);
-api_method!(get_owner_photo_upload_server);
-api_method!(get_tags);
-api_method!(get_upload_server);
-api_method!(get_user_photos);
-api_method!(get_wall_upload_server);
-api_method!(make_cover);
 api_method!(move_, "photos.move");
-api_method!(put_tag);
-api_method!(remove_tag);
-api_method!(reorder_albums);
-api_method!(reorder_photos);
-api_method!(report);
-api_method!(report_comment);
-api_method!(restore);
-api_method!(restore_comment);
-api_method!(save);
-api_method!(save_market_album_photo);
-api_method!(save_market_photo);
-api_method!(save_messages_photo);
-api_method!(save_owner_cover_photo);
-api_method!(save_owner_photo);
-api_method!(save_wall_photo);
-api_method!(search);
