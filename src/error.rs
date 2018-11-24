@@ -1,9 +1,7 @@
-//! All errors that can happen during a method call
-
-use std::result::Result as StdResult;
+//! Represents errors that can happen during a method call
 
 /// Convenience type for defining `Result`s
-pub type Result<T> = StdResult<T, Error>;
+pub type Result<T> = std::result::Result<T, Error>;
 
 /// An error returned by the API
 #[derive(Fail, Deserialize, Debug, Eq, PartialEq, Clone)]
