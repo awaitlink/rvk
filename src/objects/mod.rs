@@ -1,8 +1,10 @@
 //! Represents various objects that are returned as JSON by the API
 //!
-//! ## Note: `type` fields
+//! ## Note: `type` and `ref` fields
 //!
-//! Since `type` is a Rust keyword, all `type` fields are named `type_` (**with the underscore!**)
+//! Since `type` and `ref` are Rust keywords, an underscore (`_`) is added at the end of these:
+//! - `type` **->** `type_`,
+//! - `ref` **->** `ref_`.
 //!
 //! ## Note
 //!

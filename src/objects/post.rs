@@ -32,6 +32,7 @@ pub struct Post {
     pub can_close: Boolean,
     pub is_pinned: Integer,
     pub marked_as_ads: Integer,
+    pub is_favorite: Option<Boolean>,
 }
 
 #[derive(Deserialize, Clone, Debug)]

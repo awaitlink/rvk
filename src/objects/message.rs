@@ -9,11 +9,17 @@ pub struct Message {
     pub from_id: Integer,
     pub text: Option<String>,
     pub random_id: Option<Integer>,
+
+    #[serde(rename = "ref")]
+    pub ref_: Option<String>,
+
+    pub ref_source: Option<Integer>,
     pub attachments: Option<Vec<attachment::MessageAttachment>>,
     pub important: Option<Boolean>,
     pub geo: Option<geo::Geo>,
     pub payload: Option<String>,
     pub fwd_messages: Option<Vec<Message>>,
+    pub reply_message: Option<Box<Message>>,
     pub action: Option<Action>,
 }
 

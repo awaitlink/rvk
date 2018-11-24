@@ -2,7 +2,6 @@
 .idea/
 
 /target
-**/*.rs.bk
 Cargo.lock
 
 src/main.rs

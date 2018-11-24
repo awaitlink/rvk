@@ -12,6 +12,7 @@ pub struct MarketItem {
     pub thumb_photo: String,
     pub date: Integer,
     pub availability: Integer,
+    pub is_favorite: Option<Boolean>,
 
     // extended
     pub photos: Option<Vec<photo::Photo>>,
