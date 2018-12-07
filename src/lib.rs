@@ -43,25 +43,13 @@
 //! }
 //! ```
 
-extern crate heck;
-extern crate reqwest;
-extern crate serde;
-extern crate serde_json;
-#[macro_use]
-extern crate serde_derive;
-extern crate failure;
-#[macro_use]
-extern crate failure_derive;
-#[macro_use]
-extern crate lazy_static;
-
 pub mod api;
 pub mod error;
 pub mod methods;
 pub mod objects;
 
-pub use api::APIClient;
-pub use api::Params;
+pub use crate::api::APIClient;
+pub use crate::api::Params;
 
 /// Defines the version of VK API that is used
 pub const API_VERSION: &str = "5.92";

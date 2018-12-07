@@ -1,7 +1,7 @@
 //! Works with the API
 
-use super::error::{APIError, Result};
-use super::API_VERSION;
+use crate::error::{APIError, Result};
+use crate::API_VERSION;
 use reqwest::{Client, Response};
 use serde_json::{from_value, Map, Value};
 use std::collections::HashMap;

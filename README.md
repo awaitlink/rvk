@@ -15,17 +15,12 @@ Changelog is available [here][changelog].
 - [`objects`][modules/objects] - contains **API [objects][vk/objects]**. See also [note about objects](#objects).
 
 # Usage
-Add the dependency to your `Cargo.toml` file:
+Add the dependency to your project:
 
+<sub>`Cargo.toml`</sub>
 ```toml
 [dependencies]
-rvk = "0.8"
-```
-
-Also, add this line to your crate's `main.rs` or `lib.rs`:
-
-```rust
-extern crate rvk;
+rvk = "0.9"
 ```
 
 Now you can take a look at `rvk`'s [API documentation][docs.rs/rvk] to learn more about the available functions.
@@ -34,15 +29,14 @@ Now you can take a look at `rvk`'s [API documentation][docs.rs/rvk] to learn mor
 
 To use this example, you will **also** need the [`serde_json`][crates.io/serde_json] crate to deserialize the API response:
 
+<sub>`Cargo.toml`</sub>
 ```toml
 [dependencies]
 serde_json = "1.0"
 ```
 
+<sub>`main.rs`</sub>
 ```rust
-extern crate rvk;
-extern crate serde_json;
-
 use rvk::{methods::*, objects::user::User, APIClient, Params};
 use serde_json::from_value;
 

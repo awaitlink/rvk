@@ -1,3 +1,5 @@
+use super::*;
+
 /// <https://vk.com/dev/link_button>
 #[derive(Deserialize, Clone, Debug)]
 pub struct Button {

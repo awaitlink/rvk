@@ -1,6 +1,6 @@
 [package]
 name = "rvk"
-version = "0.8.0" # README.md, CHANGELOG.md
+version = "0.9.0" # README.md, CHANGELOG.md
 authors = ["Artem Varaksa <aymfst@gmail.com>"]
 readme = "README.md"
 license = "MIT"
@@ -8,6 +8,7 @@ description = "Crate for accessing VK API"
 repository = "https://github.com/u32i64/rvk"
 keywords = ["vk", "api", "method"]
 categories = ["api-bindings"]
+edition = "2018"
 
 [dependencies]
 heck = "0.3"

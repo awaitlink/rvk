@@ -12,6 +12,8 @@
 //!
 //! If you spot any mistakes or bugs, please [report them](https://github.com/u32i64/rvk/issues)!
 
+use serde_derive::Deserialize;
+
 /// The 'integer' type that is used in objects
 pub type Integer = i64;
 

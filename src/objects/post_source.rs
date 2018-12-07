@@ -1,3 +1,5 @@
+use super::*;
+
 /// <https://vk.com/dev/objects/post_source>
 #[derive(Deserialize, Clone, Debug)]
 pub struct PostSource {
