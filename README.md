@@ -3,7 +3,7 @@
 [![downloads][badges/downloads]][crates.io/rvk]
 [![license][badges/license]][license]
 
-> A crate for accessing VK API in Rust (synchronously).
+> A crate for accessing VK (VKontakte) API in Rust (synchronously).
 
 Changelog is available [here][changelog].
 
