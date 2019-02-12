@@ -1,7 +1,9 @@
 //! Works with the API
 
-use crate::error::{APIError, Result};
-use crate::API_VERSION;
+use crate::{
+    error::{APIError, Result},
+    API_VERSION,
+};
 use reqwest::{Client, Response};
 use serde_json::{from_value, Map, Value};
 use std::collections::HashMap;
@@ -10,6 +12,7 @@ use std::collections::HashMap;
 pub type Params = HashMap<String, String>;
 
 /// An API client used to call API methods
+#[derive(Debug)]
 pub struct APIClient {
     client: Client,
     token: String,

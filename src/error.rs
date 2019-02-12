@@ -1,7 +1,7 @@
 //! Represents errors that can happen during a method call
 
-use serde_derive::Deserialize;
 use failure_derive::Fail;
+use serde_derive::Deserialize;
 
 /// Convenience type for defining `Result`s
 pub type Result<T> = std::result::Result<T, Error>;

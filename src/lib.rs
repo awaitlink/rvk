@@ -48,8 +48,7 @@ pub mod error;
 pub mod methods;
 pub mod objects;
 
-pub use crate::api::APIClient;
-pub use crate::api::Params;
+pub use crate::api::{APIClient, Params};
 
 /// Defines the version of VK API that is used
 pub const API_VERSION: &str = "5.92";
