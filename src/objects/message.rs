@@ -5,8 +5,10 @@ use super::*;
 pub struct Message {
     pub id: Integer,
     pub date: Integer,
-    pub peer_id: Integer,
+    pub peer_id: Option<Integer>,
     pub from_id: Integer,
+    pub to_id: Option<Integer>,
+    pub state: Option<String>,
     pub text: Option<String>,
     pub random_id: Option<Integer>,
 
