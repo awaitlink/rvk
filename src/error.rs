@@ -24,7 +24,7 @@ impl APIError {
         Self {
             error_code: code,
             error_msg: msg,
-            extra: extra,
+            extra,
         }
     }
 
