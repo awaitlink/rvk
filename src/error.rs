@@ -1,25 +1,26 @@
-//! Represents errors that can happen during a method call
+//! Represents errors that can happen during a method call.
 
 use failure_derive::Fail;
 use serde_derive::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::HashMap;
 
-/// Convenience type for defining `Result`s
+/// Convenience type for defining `Result`s.
 pub type Result<T> = std::result::Result<T, Error>;
 
-/// An error returned by the API
+/// An error returned by the API.
 #[derive(Fail, Deserialize, Serialize, Debug, PartialEq, Clone)]
 #[fail(display = "API Error #{}: {}", error_code, error_msg)]
 pub struct APIError {
     error_code: u64,
     error_msg: String,
+
     #[serde(flatten)]
     extra: HashMap<String, Value>,
 }
 
 impl APIError {
-    /// Creates a new `APIError`
+    /// Creates a new `APIError`.
     pub fn new(code: u64, msg: String, extra: HashMap<String, Value>) -> Self {
         Self {
             error_code: code,
@@ -28,49 +29,63 @@ impl APIError {
         }
     }
 
-    /// Returns the code of this `APIError`
+    /// Returns the code of this `APIError`.
     ///
     /// ```
-    /// use rvk::error::APIError;
-    /// use std::collections::HashMap;
+    /// # use rvk::error::APIError;
+    /// # use std::collections::HashMap;
     ///
-    /// let err = APIError::new(0, "test".to_string(), HashMap::new());
+    /// let err = APIError::new(0, "test".into(), HashMap::new());
     /// assert_eq!(err.code(), 0);
     /// ```
     pub fn code(&self) -> u64 {
         self.error_code
     }
 
-    /// Returns the message of this `APIError`
+    /// Returns the message of this `APIError`.
     ///
     /// ```
-    /// use rvk::error::APIError;
-    /// use std::collections::HashMap;
+    /// # use rvk::error::APIError;
+    /// # use std::collections::HashMap;
     ///
-    /// let err = APIError::new(0, "test".to_string(), HashMap::new());
+    /// let err = APIError::new(0, "test".into(), HashMap::new());
     /// assert_eq!(err.msg(), "test");
     /// ```
     pub fn msg(&self) -> &String {
         &self.error_msg
     }
+
+    /// Returns the extra fields of this `APIError`.
+    ///
+    /// ```
+    /// # use rvk::error::APIError;
+    /// # use std::collections::HashMap;
+    /// # use serde_json::Value;
+    ///
+    /// let err = APIError::new(0, "test".into(), HashMap::new());
+    /// assert_eq!(err.extra().clone(), HashMap::<String, Value>::new());
+    /// ```
+    pub fn extra(&self) -> &HashMap<String, Value> {
+        &self.extra
+    }
 }
 
-/// A generic error
+/// A generic error.
 #[derive(Fail, Debug)]
 pub enum Error {
-    /// Errors from the API
+    /// Errors from the API.
     #[fail(display = "{}", _0)]
     API(#[cause] APIError),
 
-    /// Errors with making a request
+    /// Errors with making a request.
     #[fail(display = "Request error: {}", _0)]
-    Request(#[cause] ::reqwest::Error),
+    Request(#[cause] reqwest::Error),
 
-    /// Serialization/Deserialization errors
+    /// Serialization/Deserialization errors.
     #[fail(display = "Serialization/Deserialization error: {}", _0)]
-    Serde(#[cause] ::serde_json::error::Error),
+    Serde(#[cause] serde_json::error::Error),
 
-    /// Other errors
+    /// Other errors.
     #[fail(display = "Other error: {}", _0)]
     Other(String),
 }
@@ -81,14 +96,14 @@ impl From<APIError> for Error {
     }
 }
 
-impl From<::reqwest::Error> for Error {
-    fn from(e: ::reqwest::Error) -> Error {
+impl From<reqwest::Error> for Error {
+    fn from(e: reqwest::Error) -> Error {
         Error::Request(e)
     }
 }
 
-impl From<::serde_json::error::Error> for Error {
-    fn from(e: ::serde_json::error::Error) -> Error {
+impl From<serde_json::error::Error> for Error {
+    fn from(e: serde_json::error::Error) -> Error {
         Error::Serde(e)
     }
 }
@@ -99,8 +114,8 @@ impl From<String> for Error {
     }
 }
 
-impl From<&'static str> for Error {
-    fn from(s: &'static str) -> Error {
+impl From<&str> for Error {
+    fn from(s: &str) -> Error {
         s.to_string().into()
     }
 }

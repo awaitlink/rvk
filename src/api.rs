@@ -11,7 +11,7 @@ use std::collections::HashMap;
 /// A HashMap which contains method parameters
 pub type Params = HashMap<String, String>;
 
-/// An API client used to call API methods
+/// An API client used to call API methods.
 #[derive(Debug)]
 pub struct APIClient {
     client: Client,
@@ -19,7 +19,7 @@ pub struct APIClient {
 }
 
 impl APIClient {
-    /// Creates a new `APIClient`, given an access token
+    /// Creates a new `APIClient`, given an access token.
     ///
     /// # Panics
     /// This method panics if native TLS backend cannot be created or initialized by the `reqwest` crate.
@@ -32,7 +32,7 @@ impl APIClient {
         }
     }
 
-    /// Calls an API method, given its name and parameters
+    /// Calls an API method, given its name and parameters.
     pub fn call_method(&self, method_name: &str, mut params: Params) -> Result<Value> {
         params.insert("v".into(), API_VERSION.into());
         params.insert("access_token".into(), self.token.clone());

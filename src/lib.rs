@@ -10,8 +10,6 @@
 //! - [`methods`](methods/index.html) **module**, which contains **API [methods](https://vk.com/dev/methods)**;
 //! - [`objects`](objects/index.html) **module**, which contains **API [objects](https://vk.com/dev/objects)**,
 //!
-//! which collectively make accessing the VK API easy, as shown in the example below.
-//!
 //! # Example
 //! ```no_run
 //! extern crate rvk;
@@ -50,5 +48,5 @@ pub mod objects;
 
 pub use crate::api::{APIClient, Params};
 
-/// Defines the version of VK API that is used
+/// Defines the version of VK API that is used.
 pub const API_VERSION: &str = "5.92";

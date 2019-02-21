@@ -3,7 +3,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.11.0] - ????-??-??
+## [0.11.0] - 2019-02-21
+### Changed
+- Added `extra` field to `APIError` ([#4](https://github.com/u32i64/rvk/pull/4)).
+- `impl From<&str>` instead of `impl From<&'static str>` for `APIError`.
+- Some tweaks to docs.
+
 ### Added
 - New methods. See [`9ca852c`](https://github.com/u32i64/rvk/commit/9ca852cbd9154a6a9374fe727bcd06c16dfe7111).
 
