@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.11.0] - ????-??-??
+### Added
+- New methods. See [`9ca852c`](https://github.com/u32i64/rvk/commit/9ca852cbd9154a6a9374fe727bcd06c16dfe7111).
+
 ## [0.10.0] - 2019-02-17
 > **yanked**, changes reverted.
 ### Added
