@@ -1,25 +1,30 @@
 //! Represents errors that can happen during a method call
 
 use failure_derive::Fail;
-use serde_derive::Deserialize;
+use serde_derive::{Deserialize, Serialize};
+use serde_json::Value;
+use std::collections::HashMap;
 
 /// Convenience type for defining `Result`s
 pub type Result<T> = std::result::Result<T, Error>;
 
 /// An error returned by the API
-#[derive(Fail, Deserialize, Debug, Eq, PartialEq, Clone)]
+#[derive(Fail, Deserialize, Serialize, Debug, PartialEq, Clone)]
 #[fail(display = "API Error #{}: {}", error_code, error_msg)]
 pub struct APIError {
     error_code: u64,
     error_msg: String,
+    #[serde(flatten)]
+    extra: HashMap<String, Value>,
 }
 
 impl APIError {
     /// Creates a new `APIError`
-    pub fn new(code: u64, msg: String) -> Self {
+    pub fn new(code: u64, msg: String, extra: HashMap<String, Value>) -> Self {
         Self {
             error_code: code,
             error_msg: msg,
+            extra: extra,
         }
     }
 
@@ -27,8 +32,9 @@ impl APIError {
     ///
     /// ```
     /// use rvk::error::APIError;
+    /// use std::collections::HashMap;
     ///
-    /// let err = APIError::new(0, "test".to_string());
+    /// let err = APIError::new(0, "test".to_string(), HashMap::new());
     /// assert_eq!(err.code(), 0);
     /// ```
     pub fn code(&self) -> u64 {
@@ -39,8 +45,9 @@ impl APIError {
     ///
     /// ```
     /// use rvk::error::APIError;
+    /// use std::collections::HashMap;
     ///
-    /// let err = APIError::new(0, "test".to_string());
+    /// let err = APIError::new(0, "test".to_string(), HashMap::new());
     /// assert_eq!(err.msg(), "test");
     /// ```
     pub fn msg(&self) -> &String {
@@ -104,7 +111,7 @@ mod tests {
 
     #[test]
     fn api_error() {
-        let api_err = APIError::new(0, "test".to_string());
+        let api_err = APIError::new(0, "test".to_string(), HashMap::new());
         let err: Error = api_err.clone().into();
 
         match err {
