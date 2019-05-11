@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.12.0] - 2018-11-24
+## [0.12.0] - 2019-05-11
 ### Changed
 - `APIClient::new` now accepts `token: impl Into<String>` instead of `token: String`.
 - Updated to API version **5.95**.
