@@ -20,7 +20,7 @@ Add the dependency to your project:
 <sub>`Cargo.toml`</sub>
 ```toml
 [dependencies]
-rvk = "0.11"
+rvk = "0.12"
 ```
 
 Now you can take a look at `rvk`'s [API documentation][docs.rs/rvk] to learn more about the available functions.
@@ -41,7 +41,7 @@ use rvk::{methods::*, objects::user::User, APIClient, Params};
 use serde_json::from_value;
 
 fn main() {
-    let api = APIClient::new("your_access_token".into()); // Create an API Client
+    let api = APIClient::new("your_access_token"); // Create an API Client
 
     let mut params = Params::new(); // Create a HashMap to store parameters
     params.insert("user_ids".into(), "1".into());

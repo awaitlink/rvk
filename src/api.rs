@@ -25,10 +25,10 @@ impl APIClient {
     /// This method panics if native TLS backend cannot be created or initialized by the `reqwest` crate.
     ///
     /// See [reqwest docs](https://docs.rs/reqwest/0.9.*/reqwest/struct.Client.html#panic) for more information.
-    pub fn new(token: String) -> APIClient {
+    pub fn new(token: impl Into<String>) -> APIClient {
         APIClient {
             client: Client::new(),
-            token,
+            token: token.into(),
         }
     }
 

@@ -19,6 +19,8 @@ pub struct MarketItem {
     pub can_comment: Option<Integer>,
     pub can_repost: Option<Integer>,
     pub likes: Option<Likes>,
+    pub url: Option<String>,
+    pub button_title: Option<String>,
 }
 
 #[derive(Deserialize, Clone, Debug)]

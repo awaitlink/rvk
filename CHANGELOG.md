@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.12.0] - 2018-11-24
+### Changed
+- `APIClient::new` now accepts `token: impl Into<String>` instead of `token: String`.
+- Updated to API version **5.95**.
+
 ## [0.11.0] - 2019-02-21
 ### Changed
 - Added `extra` field to `APIError` ([#4](https://github.com/u32i64/rvk/pull/4)).
