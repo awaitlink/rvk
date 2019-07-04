@@ -21,5 +21,5 @@ api_category!("fave"; methods {
     reorder_tags,
     set_page_tags,
     set_tags,
-    track_page_interaction,
+    track_page_interaction
 });

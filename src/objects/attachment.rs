@@ -121,6 +121,14 @@ pub struct Card {
     pub button: button::Button,
     pub price: String,
     pub price_old: Option<String>,
+
+    /// Access key may be present in attachments
+    /// (
+    /// <https://vk.com/dev/objects/attachments_w>
+    /// or
+    /// <https://vk.com/dev/objects/attachments_m>
+    /// )
+    pub access_key: Option<String>,
 }
 
 #[derive(Deserialize, Clone, Debug)]
@@ -133,6 +141,14 @@ pub struct Event {
     pub text: Option<String>,
     pub button_text: Option<String>,
     pub friends: Option<Vec<Integer>>,
+
+    /// Access key may be present in attachments
+    /// (
+    /// <https://vk.com/dev/objects/attachments_w>
+    /// or
+    /// <https://vk.com/dev/objects/attachments_m>
+    /// )
+    pub access_key: Option<String>,
 }
 
 /// <https://vk.com/dev/objects/attachments_m>
