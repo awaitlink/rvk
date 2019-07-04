@@ -56,6 +56,9 @@ pub struct WallAttachment {
 
     // type = pretty_cards
     pub cards: Option<Vec<Card>>,
+
+    // type = event
+    pub event: Option<Event>,
 }
 
 /// For posts created before 2013
@@ -118,6 +121,18 @@ pub struct Card {
     pub button: button::Button,
     pub price: String,
     pub price_old: Option<String>,
+}
+
+#[derive(Deserialize, Clone, Debug)]
+pub struct Event {
+    pub id: Integer,
+    pub time: Integer,
+    pub member_status: Integer,
+    pub is_favorite: Boolean,
+    pub address: Option<String>,
+    pub text: Option<String>,
+    pub button_text: Option<String>,
+    pub friends: Option<Vec<Integer>>,
 }
 
 /// <https://vk.com/dev/objects/attachments_m>

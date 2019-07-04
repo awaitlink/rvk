@@ -1,7 +1,11 @@
 # Changelog
-All notable changes to this project will be documented in this file.    
+All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [0.13.0] - 2019-07-04
+### Changed
+- Updated to API version **5.101**.
 
 ## [0.12.0] - 2019-05-11
 ### Changed

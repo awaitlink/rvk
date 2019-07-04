@@ -9,12 +9,14 @@ pub struct Video {
     pub description: String,
     pub duration: Integer,
 
+    pub image: Option<Vec<VideoImage>>, // from changelog v5.101 @ https://vk.com/dev/versions
     pub photo_130: Option<String>,
     pub photo_320: Option<String>,
     pub photo_640: Option<String>,
     pub photo_800: Option<String>,
     pub photo_1280: Option<String>,
 
+    pub first_frame: Option<Vec<VideoImage>>, // from changelog v5.101 @ https://vk.com/dev/versions
     pub first_frame_130: Option<String>,
     pub first_frame_320: Option<String>,
     pub first_frame_640: Option<String>,
@@ -35,6 +37,30 @@ pub struct Video {
     pub live: Option<Integer>,
     pub upcoming: Option<Integer>,
     pub is_favorite: Option<Boolean>,
+}
+
+/// <https://vk.com/dev/objects/video_image>
+#[derive(Deserialize, Clone, Debug)]
+pub struct VideoImage {
+    url: String,
+    width: Integer,
+    height: Integer,
+    with_padding: Option<Integer>,
+}
+
+/// <https://vk.com/dev/objects/video_album_full>
+#[derive(Deserialize, Clone, Debug)]
+pub struct VideoPlaylist {
+    pub id: Integer,
+    pub owner_id: Integer,
+    pub title: String,
+    pub count: Integer,
+    pub photo160: Option<String>,
+    pub photo320: Option<String>,
+    pub image: Option<Vec<VideoImage>>,
+    pub updated_time: Option<Integer>,
+    pub is_system: Option<Integer>,
+    pub privacy: Option<super::privacy::Privacy>,
 }
 
 /// <https://vk.com/dev/objects/video_cat_element>
