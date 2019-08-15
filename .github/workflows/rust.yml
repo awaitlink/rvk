@@ -1,0 +1,16 @@
+name: Rust
+
+on: [push, pull_request]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: fmt check
+      run: cargo fmt --check
+    - name: clippy
+      run: cargo clippy -- -Dwarnings
+    - name: test
+      run: cargo test
