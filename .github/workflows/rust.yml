@@ -3,7 +3,7 @@ name: Rust
 on: [push, pull_request]
 
 jobs:
-  stable_and_beta:
+  main:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,8 +22,8 @@ jobs:
       run: cargo clippy -- -Dwarnings
     - name: test
       run: cargo test
-      
-  nightly:
+
+  main-try:
     runs-on: ubuntu-latest
     strategy:
       matrix:
