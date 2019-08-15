@@ -3,16 +3,44 @@ name: Rust
 on: [push, pull_request]
 
 jobs:
-  main:
-    runs-on: ubuntu-latest
+  stable_and_beta:
+    strategy:
+      matrix:
+        rust: [stable, beta]
 
     steps:
     - uses: actions/checkout@v1
-    - name: install latest stable
-      run: rustup update
+    - name: configure Rust
+      run: |
+        rustup install ${{ matrix.rust }}
+        rustup default ${{ matrix.rust }}
+        rustup component add --toolchain ${{ matrix.rust }} rustfmt clippy
     - name: fmt check
       run: cargo fmt -- --check
     - name: clippy
       run: cargo clippy -- -Dwarnings
     - name: test
+      run: cargo test
+      
+  nightly:
+    strategy:
+      matrix:
+        rust: nightly
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: configure Rust
+      continue-on-error: true
+      run: |
+        rustup install ${{ matrix.rust }}
+        rustup default ${{ matrix.rust }}
+        rustup component add --toolchain ${{ matrix.rust }} rustfmt clippy
+    - name: fmt check
+      continue-on-error: true
+      run: cargo fmt -- --check
+    - name: clippy
+      continue-on-error: true
+      run: cargo clippy -- -Dwarnings
+    - name: test
+      continue-on-error: true
       run: cargo test
