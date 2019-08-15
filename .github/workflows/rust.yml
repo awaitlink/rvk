@@ -4,6 +4,7 @@ on: [push, pull_request]
 
 jobs:
   stable_and_beta:
+    runs_on: ubuntu-latest
     strategy:
       matrix:
         rust: [stable, beta]
@@ -23,6 +24,7 @@ jobs:
       run: cargo test
       
   nightly:
+    runs_on: ubuntu-latest
     strategy:
       matrix:
         rust: [nightly]
