@@ -8,6 +8,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: install latest stable
+      run: rustup update
     - name: fmt check
       run: cargo fmt -- --check
     - name: clippy
