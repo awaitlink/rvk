@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: fmt check
-      run: cargo fmt --check
+      run: cargo fmt -- --check
     - name: clippy
       run: cargo clippy -- -Dwarnings
     - name: test
