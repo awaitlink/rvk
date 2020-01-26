@@ -49,4 +49,4 @@ pub mod objects;
 pub use crate::api::{APIClient, Params};
 
 /// Defines the version of VK API that is used.
-pub const API_VERSION: &str = "5.101";
+pub const API_VERSION: &str = "5.103";

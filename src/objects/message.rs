@@ -21,6 +21,8 @@ pub struct Message {
     pub fwd_messages: Option<Vec<Message>>,
     pub reply_message: Option<Box<Message>>,
     pub action: Option<Action>,
+
+    pub is_cropped: Option<Boolean> // might be Option<Integer>; from changelog v5.102 @ https://vk.com/dev/versions
 }
 
 #[derive(Deserialize, Clone, Debug)]

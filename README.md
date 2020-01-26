@@ -5,6 +5,7 @@
 
 > A crate for accessing VK (VKontakte) API in Rust (synchronously).
 
+The version of VK API that is used by this crate can be found [here][vk-api-version].
 Changelog is available [here][changelog].
 
 # Modules
@@ -20,7 +21,7 @@ Add the dependency to your project:
 <sub>`Cargo.toml`</sub>
 ```toml
 [dependencies]
-rvk = "0.13"
+rvk = "0.14"
 ```
 
 Now you can take a look at `rvk`'s [API documentation][docs.rs/rvk] to learn more about the available functions.
@@ -73,6 +74,8 @@ If you spot any mistakes or bugs, please [report them][issues]!
 [crates.io/serde_json]: https://crates.io/crates/serde_json
 
 [docs.rs/rvk]: https://docs.rs/rvk
+
+[vk-api-version]: https://github.com/u32i64/rvk/blob/master/src/lib.rs#L52
 
 [license]: https://github.com/u32i64/rvk/blob/master/LICENSE
 [changelog]: https://github.com/u32i64/rvk/blob/master/CHANGELOG.md

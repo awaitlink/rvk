@@ -1,7 +1,7 @@
 [package]
 name = "rvk"
-version = "0.13.0" # README.md, CHANGELOG.md
-authors = ["Artem Varaksa <aymfst@gmail.com>"]
+version = "0.14.0" # README.md, CHANGELOG.md
+authors = ["Artem Varaksa <artvaraksa@gmail.com>"]
 readme = "README.md"
 license = "MIT"
 description = "Crate for accessing VK (VKontakte) API"

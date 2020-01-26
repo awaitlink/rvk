@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.14.0] - 2020-01-26
+### Changed
+- Updated to API version **5.103**.
+
 ## [0.13.0] - 2019-07-04
 ### Changed
 - Updated to API version **5.101**.
@@ -73,6 +77,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### First release
 
 
+[0.14.0]: https://github.com/u32i64/rvk/compare/v0.13.0...v0.14.0
+[0.13.0]: https://github.com/u32i64/rvk/compare/v0.12.0...v0.13.0
 [0.12.0]: https://github.com/u32i64/rvk/compare/v0.11.0...v0.12.0
 [0.11.0]: https://github.com/u32i64/rvk/compare/v0.10.0...v0.11.0
 [0.10.0]: https://github.com/u32i64/rvk/compare/v0.9.1...v0.10.0

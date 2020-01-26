@@ -9,15 +9,19 @@ pub struct Video {
     pub description: String,
     pub duration: Integer,
 
-    pub image: Option<Vec<VideoImage>>, // from changelog v5.101 @ https://vk.com/dev/versions
+    pub image: Option<Vec<VideoImage>>,
+    // from changelog v5.101 @ https://vk.com/dev/versions
     pub photo_130: Option<String>,
     pub photo_320: Option<String>,
     pub photo_640: Option<String>,
     pub photo_800: Option<String>,
     pub photo_1280: Option<String>,
 
-    pub first_frame: Option<Vec<VideoImage>>, // from changelog v5.101 @ https://vk.com/dev/versions
+    pub first_frame: Option<Vec<VideoImage>>,
+    // from changelog v5.101 @ https://vk.com/dev/versions
     pub first_frame_130: Option<String>,
+    pub first_frame_160: Option<String>,
+    // can be present inside https://vk.com/dev/objects/story
     pub first_frame_320: Option<String>,
     pub first_frame_640: Option<String>,
     pub first_frame_800: Option<String>,
