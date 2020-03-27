@@ -4,17 +4,17 @@ use super::*;
 #[derive(Deserialize, Clone, Debug)]
 pub struct Photo {
     pub id: Integer,
-    pub album_id: Integer,
-    pub owner_id: Integer,
+    pub album_id: Option<Integer>,
+    pub owner_id: Option<Integer>,
     pub user_id: Option<Integer>,
-    pub text: String,
-    pub date: Integer,
-    pub sizes: Vec<Size>,
+    pub text: Option<String>,
+    pub date: Option<Integer>,
+    pub sizes: Option<Vec<Size>>,
     pub width: Option<Integer>,
     pub height: Option<Integer>,
 
     // for attachment::WallAttachment
-    pub post_id: Option<String>,
+    pub post_id: Option<Integer>,
 
     /// Access key may be present in attachments
     /// (
