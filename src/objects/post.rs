@@ -9,7 +9,7 @@ pub struct Post {
     pub to_id: Option<Integer>,
 
     pub from_id: Integer,
-    pub created_by: Integer,
+    pub created_by: Option<Integer>,
     pub date: Integer,
     pub text: String,
     pub reply_owner_id: Integer,
