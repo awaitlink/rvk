@@ -4,7 +4,7 @@ use super::*;
 #[derive(Deserialize, Clone, Debug)]
 pub struct Photo {
     pub id: Integer,
-    pub album_id: Integer,
+    pub album_id: Option<Integer>,
     pub owner_id: Integer,
     pub user_id: Option<Integer>,
     pub text: String,
