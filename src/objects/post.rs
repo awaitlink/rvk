@@ -13,7 +13,7 @@ pub struct Post {
     pub date: Integer,
     pub text: String,
     pub reply_owner_id: Option<Integer>,
-    pub reply_post_id: Integer,
+    pub reply_post_id: Option<Integer>,
     pub friends_only: Option<Integer>,
     pub comments: Comments,
     pub likes: Likes,
