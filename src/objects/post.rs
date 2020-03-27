@@ -30,7 +30,7 @@ pub struct Post {
     pub can_edit: Option<Integer>,
     pub can_open: Option<Boolean>,
     pub can_close: Option<Boolean>,
-    pub is_pinned: Integer,
+    pub is_pinned: Option<Integer>,
     pub marked_as_ads: Integer,
     pub is_favorite: Option<Boolean>,
 }
