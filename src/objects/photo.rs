@@ -8,7 +8,7 @@ pub struct Photo {
     pub owner_id: Option<Integer>,
     pub user_id: Option<Integer>,
     pub text: Option<String>,
-    pub date: Integer,
+    pub date: Option<Integer>,
     pub sizes: Vec<Size>,
     pub width: Option<Integer>,
     pub height: Option<Integer>,
