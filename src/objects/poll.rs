@@ -22,7 +22,7 @@ pub struct Poll {
     pub author_id: Integer,
     pub photo: Option<photo::Photo>,
     pub background: Option<Background>,
-    pub friends: Vec<Integer>,
+    pub friends: Vec<PollFriend>,
 }
 
 #[derive(Deserialize, Clone, Debug)]
@@ -52,4 +52,9 @@ pub struct Background {
 pub struct GradientPoint {
     pub position: Number,
     pub color: String,
+}
+
+#[derive(Deserialize, Clone, Debug)]
+pub struct PollFriend {
+    pub id: Integer,
 }
