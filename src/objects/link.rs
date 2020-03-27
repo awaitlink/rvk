@@ -9,7 +9,7 @@ pub struct Link {
     pub description: Option<String>,
     pub photo: Option<photo::Photo>,
     pub product: Option<Product>,
-    pub button: button::Button,
+    pub button: Option<button::Button>,
     pub preview_page: String,
     pub preview_url: String,
 }
