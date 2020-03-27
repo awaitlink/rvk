@@ -27,7 +27,7 @@ pub struct Post {
     pub copy_history: Option<Vec<Post>>,
     pub can_pin: Integer,
     pub can_delete: Integer,
-    pub can_edit: Integer,
+    pub can_edit: Option<Integer>,
     pub can_open: Boolean,
     pub can_close: Boolean,
     pub is_pinned: Integer,
