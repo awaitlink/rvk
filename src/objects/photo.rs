@@ -14,7 +14,7 @@ pub struct Photo {
     pub height: Option<Integer>,
 
     // for attachment::WallAttachment
-    pub post_id: Option<String>,
+    pub post_id: Option<Integer>,
 
     /// Access key may be present in attachments
     /// (
