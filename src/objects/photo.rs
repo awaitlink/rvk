@@ -5,7 +5,7 @@ use super::*;
 pub struct Photo {
     pub id: Integer,
     pub album_id: Option<Integer>,
-    pub owner_id: Integer,
+    pub owner_id: Option<Integer>,
     pub user_id: Option<Integer>,
     pub text: String,
     pub date: Integer,
