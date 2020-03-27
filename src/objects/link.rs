@@ -10,8 +10,8 @@ pub struct Link {
     pub photo: Option<photo::Photo>,
     pub product: Option<Product>,
     pub button: Option<button::Button>,
-    pub preview_page: String,
-    pub preview_url: String,
+    pub preview_page: Option<String>,
+    pub preview_url: Option<String>,
 }
 
 /// <https://vk.com/dev/link_product>
