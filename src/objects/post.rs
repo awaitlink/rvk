@@ -22,7 +22,7 @@ pub struct Post {
     pub post_type: String,
     pub post_source: Option<post_source::PostSource>,
     pub attachments: Option<Vec<attachment::WallAttachment>>,
-    pub geo: geo::Geo,
+    pub geo: Option<geo::Geo>,
     pub signer_id: Option<Integer>,
     pub copy_history: Option<Vec<Post>>,
     pub can_pin: Integer,
