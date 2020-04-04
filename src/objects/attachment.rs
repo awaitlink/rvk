@@ -61,7 +61,7 @@ pub struct WallAttachment {
     pub event: Option<Event>,
 
     // type = podcast
-    pub audio: Option<podcast::Podcast>,
+    pub podcast: Option<podcast::Podcast>,
 }
 
 /// For posts created before 2013
