@@ -43,6 +43,7 @@ pub mod message;
 pub mod note;
 pub mod page;
 pub mod photo;
+pub mod podcast;
 pub mod poll;
 pub mod post;
 pub mod post_source;
