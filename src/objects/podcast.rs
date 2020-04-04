@@ -5,5 +5,6 @@ use super::*;
 #[derive(Deserialize, Clone, Debug)]
 pub struct Podcast {
     pub url: String,
-    pub access_key: String,
+    pub title: String,
+    pub access_key: Option<String>,
 }
