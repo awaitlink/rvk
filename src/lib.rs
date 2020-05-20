@@ -13,10 +13,8 @@
 //! # Example
 //! ```no_run
 //! extern crate rvk;
-//! extern crate serde_json;
 //!
 //! use rvk::{methods::users, objects::user::User, APIClient, Params};
-//! use serde_json::from_value;
 //!
 //! #[tokio::main]
 //! async fn main() {
