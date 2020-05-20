@@ -28,9 +28,7 @@ Now you can take a look at `rvk`'s [API documentation][docs.rs/rvk] to learn mor
 
 # Example
 
-To use this example, you will **also** need the [`serde_json`][crates.io/serde_json] crate to deserialize the API response.
-
-If you want to use `tokio::main` proc macro, you need to install `tokio` crate.
+To use this example, you will **also** need the [`serde_json`][crates.io/serde_json] crate to deserialize the API response, and the [`tokio`](https://crates.io/tokio) crate for the `tokio::main` attribute proc macro.
 
 <sub>`Cargo.toml`</sub>
 ```toml
