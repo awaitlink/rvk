@@ -24,7 +24,7 @@ impl APIClient {
     /// # Panics
     /// This method panics if native TLS backend cannot be created or initialized by the `reqwest` crate.
     ///
-    /// See [reqwest docs](https://docs.rs/reqwest/0.9.*/reqwest/struct.Client.html#panic) for more information.
+    /// See [reqwest docs](https://docs.rs/reqwest/0.10/reqwest/struct.Client.html#panic) for more information.
     pub fn new(token: impl Into<String>) -> APIClient {
         APIClient {
             client: Client::new(),
@@ -33,7 +33,7 @@ impl APIClient {
     }
 
     /// Calls an API method, given its name and parameters.
-    pub fn call_method(&self, method_name: &str, mut params: Params) -> Result<Value> {
+    pub async fn call_method(&self, method_name: &str, mut params: Params) -> Result<Value> {
         params.insert("v".into(), API_VERSION.into());
         params.insert("access_token".into(), self.token.clone());
 
@@ -42,10 +42,11 @@ impl APIClient {
             .get(&("https://api.vk.com/method/".to_owned() + method_name))
             .query(&params)
             .send()
+            .await
             .map_err(|e| e.into());
         let mut response = response_result?;
 
-        let value_result: Result<Value> = response.json().map_err(|e| e.into());
+        let value_result: Result<Value> = response.json().await.map_err(|e| e.into());
         let value = value_result?;
 
         let api_response_result: Result<&Map<String, Value>> = value
