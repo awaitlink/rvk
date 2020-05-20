@@ -4,6 +4,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## Unreleased
+### Added
+- Undocumented "podcast" attachment type.
+
 ### Changed
 - `async`/`.await` support has arrived! :tada:
 - Switched from `failure` to `thiserror` for `rvk::Error` impl.
