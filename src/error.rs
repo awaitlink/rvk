@@ -1,6 +1,5 @@
 //! Represents errors that can happen during a method call.
 
-use failure_derive::Fail;
 use serde_derive::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::HashMap;
@@ -9,8 +8,7 @@ use std::collections::HashMap;
 pub type Result<T> = std::result::Result<T, Error>;
 
 /// An error returned by the API.
-#[derive(Fail, Deserialize, Serialize, Debug, PartialEq, Clone)]
-#[fail(display = "API Error #{}: {}", error_code, error_msg)]
+#[derive(Deserialize, Serialize, Debug, PartialEq, Clone)]
 pub struct APIError {
     error_code: u64,
     error_msg: String,
@@ -71,40 +69,28 @@ impl APIError {
 }
 
 /// A generic error.
-#[derive(Fail, Debug)]
+#[derive(thiserror::Error, Debug)]
 pub enum Error {
     /// Errors from the API.
-    #[fail(display = "{}", _0)]
-    API(#[cause] APIError),
+    #[error("API Error #{}: {}", .0.error_code, .0.error_msg)]
+    API(APIError),
 
     /// Errors with making a request.
-    #[fail(display = "Request error: {}", _0)]
-    Request(#[cause] reqwest::Error),
+    #[error("Request error: {0}")]
+    Request(#[from] reqwest::Error),
 
     /// Serialization/Deserialization errors.
-    #[fail(display = "Serialization/Deserialization error: {}", _0)]
-    Serde(#[cause] serde_json::error::Error),
+    #[error("Serialization/Deserialization error: {0}")]
+    Serde(#[from] serde_json::error::Error),
 
     /// Other errors.
-    #[fail(display = "Other error: {}", _0)]
+    #[error("Other error: {0}")]
     Other(String),
 }
 
 impl From<APIError> for Error {
     fn from(e: APIError) -> Error {
         Error::API(e)
-    }
-}
-
-impl From<reqwest::Error> for Error {
-    fn from(e: reqwest::Error) -> Error {
-        Error::Request(e)
-    }
-}
-
-impl From<serde_json::error::Error> for Error {
-    fn from(e: serde_json::error::Error) -> Error {
-        Error::Serde(e)
     }
 }
 
