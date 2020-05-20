@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 ### Changed
 - `async`/`.await` support has arrived! :tada:
+- Switched from `failure` to `thiserror` for `rvk::Error` impl.
 - Upgraded `reqwest` to `0.10`.
 
 ### Removed
