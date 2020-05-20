@@ -28,12 +28,11 @@ Now you can take a look at `rvk`'s [API documentation][docs.rs/rvk] to learn mor
 
 # Example
 
-To use this example, you will **also** need the [`serde_json`][crates.io/serde_json] crate to deserialize the API response, and the [`tokio`](https://crates.io/tokio) crate for the `tokio::main` attribute proc macro.
+To use this example, you will **also** need the [`tokio`](https://crates.io/tokio) crate for the `tokio::main` attribute proc macro.
 
 <sub>`Cargo.toml`</sub>
 ```toml
 [dependencies]
-serde_json = "1.0"
 tokio = { version = "0.2", features = ["full"] }
 ```
 
@@ -71,7 +70,6 @@ Due to the nature of the VK API documentation, it is not always clear if the val
 If you spot any mistakes or bugs, please [report them][issues]!
 
 [crates.io/rvk]: https://crates.io/crates/rvk
-[crates.io/serde_json]: https://crates.io/crates/serde_json
 
 [docs.rs/rvk]: https://docs.rs/rvk
 
