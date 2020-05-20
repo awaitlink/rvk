@@ -18,13 +18,14 @@
 //! use rvk::{methods::*, objects::user::User, APIClient, Params};
 //! use serde_json::from_value;
 //!
-//! fn main() {
+//! #[tokio::main]
+//! async fn main() {
 //!     let mut api = APIClient::new("your_access_token"); // Create an API Client
 //!
 //!     let mut params = Params::new(); // Create a HashMap to store parameters
 //!     params.insert("user_ids".into(), "1".into());
 //!
-//!     let res = users::get(&api, params);
+//!     let res = users::get(&api, params).await;
 //!
 //!     match res {
 //!         Ok(v) => { // v is `serde_json::Value`

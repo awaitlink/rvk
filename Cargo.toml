@@ -1,6 +1,6 @@
 [package]
 name = "rvk"
-version = "0.15.0" # README.md, CHANGELOG.md
+version = "0.2.0" # README.md, CHANGELOG.md
 authors = ["Artem Varaksa <artvaraksa@gmail.com>"]
 readme = "README.md"
 license = "MIT"
@@ -19,3 +19,6 @@ serde_derive = "1.0"
 failure = "0.1.1"
 failure_derive = "0.1.1"
 lazy_static = "1.1.0"
+
+[dev-dependencies]
+tokio = { version = "0.2", features = ["full"] }
