@@ -12,10 +12,13 @@ edition = "2018"
 
 [dependencies]
 heck = "0.3"
-reqwest = "0.9"
+reqwest = { version = "0.10", features = ["json"] }
 serde = "1.0"
 serde_json = "1.0"
 serde_derive = "1.0"
 failure = "0.1.1"
 failure_derive = "0.1.1"
 lazy_static = "1.1.0"
+
+[dev-dependencies]
+tokio = { version = "0.2", features = ["full"] }

@@ -3,7 +3,7 @@
 [![downloads][badges/downloads]][crates.io/rvk]
 [![license][badges/license]][license]
 
-> A crate for accessing VK (VKontakte) API in Rust (synchronously).
+> A crate for accessing VK (VKontakte) API in Rust (asynchronously).
 
 The version of VK API that is used by this crate can be found [here][vk-api-version].
 Changelog is available [here][changelog].
@@ -28,12 +28,13 @@ Now you can take a look at `rvk`'s [API documentation][docs.rs/rvk] to learn mor
 
 # Example
 
-To use this example, you will **also** need the [`serde_json`][crates.io/serde_json] crate to deserialize the API response:
+To use this example, you will **also** need the [`serde_json`][crates.io/serde_json] crate to deserialize the API response, and the [`tokio`](https://crates.io/tokio) crate for the `tokio::main` attribute proc macro.
 
 <sub>`Cargo.toml`</sub>
 ```toml
 [dependencies]
 serde_json = "1.0"
+tokio = { version = "0.2", features = ["full"] }
 ```
 
 <sub>`main.rs`</sub>
@@ -41,13 +42,14 @@ serde_json = "1.0"
 use rvk::{methods::*, objects::user::User, APIClient, Params};
 use serde_json::from_value;
 
-fn main() {
+#[tokio::main]
+async fn main() {
     let api = APIClient::new("your_access_token"); // Create an API Client
 
     let mut params = Params::new(); // Create a HashMap to store parameters
     params.insert("user_ids".into(), "1".into());
 
-    let res = users::get(&api, params);
+    let res = users::get(&api, params).await;
 
     match res {
         Ok(v) => { // v is `serde_json::Value`

@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+### Changed
+- `async`/`.await` support has arrived! :tada:
+- Upgraded `reqwest` to `0.10`.
+
+### Removed
+- Synchronous access has been removed in favor of `async`/`.await`.
+
 ## [0.15.0] - 2020-03-27
 ### Changed
 - Type changes based on actual API behavior (for more details see [related commits](https://github.com/u32i64/rvk/compare/596fa98dbf0855ed454d9a2ff803cf38b00366ff...61e5e21cf4cf1f92d62453b761719764895b2ce5)).
