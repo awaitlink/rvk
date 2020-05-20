@@ -39,7 +39,7 @@ tokio = { version = "0.2", features = ["full"] }
 
 <sub>`main.rs`</sub>
 ```rust
-use rvk::{methods::*, objects::user::User, APIClient, Params};
+use rvk::{methods::users, objects::user::User, APIClient, Params};
 use serde_json::from_value;
 
 #[tokio::main]
@@ -49,12 +49,11 @@ async fn main() {
     let mut params = Params::new(); // Create a HashMap to store parameters
     params.insert("user_ids".into(), "1".into());
 
-    let res = users::get(&api, params).await;
+    let res = users::get::<Vec<User>>(&api, params).await;
 
     match res {
-        Ok(v) => { // v is `serde_json::Value`
-            let users: Vec<User> = from_value(v).unwrap();
-            let user = &users[0];
+        Ok(v) => { // v is `Vec<User>`
+            let user: &User = &users[0];
 
             println!(
                 "User #{} is {} {}.",
