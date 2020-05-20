@@ -44,7 +44,7 @@ impl APIClient {
             .send()
             .await
             .map_err(|e| e.into());
-        let mut response = response_result?;
+        let response = response_result?;
 
         let value_result: Result<Value> = response.json().await.map_err(|e| e.into());
         let value = value_result?;
