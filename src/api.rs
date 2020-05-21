@@ -5,6 +5,7 @@ use crate::{
     API_VERSION,
 };
 use reqwest::{Client, Response};
+use serde::de::DeserializeOwned;
 use serde_json::{from_value, Map, Value};
 use std::collections::HashMap;
 
@@ -33,7 +34,11 @@ impl APIClient {
     }
 
     /// Calls an API method, given its name and parameters.
-    pub async fn call_method(&self, method_name: &str, mut params: Params) -> Result<Value> {
+    pub async fn call_method<T: DeserializeOwned>(
+        &self,
+        method_name: &str,
+        mut params: Params,
+    ) -> Result<T> {
         params.insert("v".into(), API_VERSION.into());
         params.insert("access_token".into(), self.token.clone());
 
@@ -47,17 +52,17 @@ impl APIClient {
         let response = response_result?;
 
         let value_result: Result<Value> = response.json().await.map_err(|e| e.into());
-        let value = value_result?;
+        let mut value = value_result?;
 
-        let api_response_result: Result<&Map<String, Value>> = value
-            .as_object()
+        let api_response_result: Result<&mut Map<String, Value>> = value
+            .as_object_mut()
             .ok_or_else(|| "API response is not an object!".into());
         let api_response = api_response_result?;
 
-        match api_response.get("response") {
-            Some(ok) => Ok(ok.clone()),
-            None => match api_response.get("error") {
-                Some(err) => Err(from_value::<APIError>(err.clone())?.into()),
+        match api_response.remove("response") {
+            Some(ok) => Ok(from_value::<T>(ok)?),
+            None => match api_response.remove("error") {
+                Some(err) => Err(from_value::<APIError>(err)?.into()),
                 None => Err("The API responded with neither a response nor an error!".into()),
             },
         }

@@ -28,19 +28,17 @@ Now you can take a look at `rvk`'s [API documentation][docs.rs/rvk] to learn mor
 
 # Example
 
-To use this example, you will **also** need the [`serde_json`][crates.io/serde_json] crate to deserialize the API response, and the [`tokio`](https://crates.io/tokio) crate for the `tokio::main` attribute proc macro.
+To use this example, you will **also** need the [`tokio`](https://crates.io/tokio) crate for the `tokio::main` attribute proc macro.
 
 <sub>`Cargo.toml`</sub>
 ```toml
 [dependencies]
-serde_json = "1.0"
 tokio = { version = "0.2", features = ["full"] }
 ```
 
 <sub>`main.rs`</sub>
 ```rust
-use rvk::{methods::*, objects::user::User, APIClient, Params};
-use serde_json::from_value;
+use rvk::{methods::users, objects::user::User, APIClient, Params};
 
 #[tokio::main]
 async fn main() {
@@ -49,12 +47,11 @@ async fn main() {
     let mut params = Params::new(); // Create a HashMap to store parameters
     params.insert("user_ids".into(), "1".into());
 
-    let res = users::get(&api, params).await;
+    let res = users::get::<Vec<User>>(&api, params).await;
 
     match res {
-        Ok(v) => { // v is `serde_json::Value`
-            let users: Vec<User> = from_value(v).unwrap();
-            let user = &users[0];
+        Ok(v) => { // v is `Vec<User>`
+            let user: &User = &users[0];
 
             println!(
                 "User #{} is {} {}.",
@@ -73,7 +70,6 @@ Due to the nature of the VK API documentation, it is not always clear if the val
 If you spot any mistakes or bugs, please [report them][issues]!
 
 [crates.io/rvk]: https://crates.io/crates/rvk
-[crates.io/serde_json]: https://crates.io/crates/serde_json
 
 [docs.rs/rvk]: https://docs.rs/rvk
 
