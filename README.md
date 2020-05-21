@@ -50,7 +50,7 @@ async fn main() {
     let res = users::get::<Vec<User>>(&api, params).await;
 
     match res {
-        Ok(v) => { // v is `Vec<User>`
+        Ok(users) => {
             let user: &User = &users[0];
 
             println!(

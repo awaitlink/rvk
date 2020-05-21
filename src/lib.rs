@@ -12,8 +12,6 @@
 //!
 //! # Example
 //! ```no_run
-//! extern crate rvk;
-//!
 //! use rvk::{methods::users, objects::user::User, APIClient, Params};
 //!
 //! #[tokio::main]
@@ -26,8 +24,8 @@
 //!     let res = users::get::<Vec<User>>(&api, params).await;
 //!
 //!     match res {
-//!         Ok(v) => { // v is `Vec<User>`
-//!             let user: &User = &v[0];
+//!         Ok(users) => {
+//!             let user: &User = &users[0];
 //!
 //!             println!(
 //!                 "User #{} is {} {}.",
