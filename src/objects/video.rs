@@ -31,7 +31,7 @@ pub struct Video {
     pub adding_date: Option<Integer>,
     pub views: Integer,
     pub comments: Integer,
-    pub player: String,
+    pub player: Option<String>,
     pub platform: Option<String>,
     pub can_edit: Option<Integer>,
     pub can_add: Integer,
