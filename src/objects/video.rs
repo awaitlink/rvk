@@ -28,7 +28,7 @@ pub struct Video {
     pub first_frame_1280: Option<String>,
 
     pub date: Integer,
-    pub adding_date: Integer,
+    pub adding_date: Option<Integer>,
     pub views: Integer,
     pub comments: Integer,
     pub player: String,
