@@ -21,7 +21,7 @@ Add the dependency to your project:
 <sub>`Cargo.toml`</sub>
 ```toml
 [dependencies]
-rvk = "0.16"
+rvk = "0.17"
 ```
 
 Now you can take a look at `rvk`'s [API documentation][docs.rs/rvk] to learn more about the available functions.
