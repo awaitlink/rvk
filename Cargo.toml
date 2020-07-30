@@ -1,6 +1,6 @@
 [package]
 name = "rvk"
-version = "0.17.0" # README.md, CHANGELOG.md
+version = "0.18.0" # README.md, CHANGELOG.md
 authors = ["Artem Varaksa <artvaraksa@gmail.com>"]
 readme = "README.md"
 license = "MIT"
