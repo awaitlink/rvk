@@ -14,7 +14,7 @@ pub struct Document {
     #[serde(rename = "type")]
     pub type_: Integer,
 
-    pub preview: DocumentPreview,
+    pub preview: Option<DocumentPreview>,
 
     /// Access key may be present in attachments
     /// (
