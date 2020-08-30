@@ -3,7 +3,7 @@ use super::*;
 /// <https://vk.com/dev/objects/photo>
 #[derive(Deserialize, Clone, Debug)]
 pub struct Photo {
-    pub id: Integer,
+    pub id: String,
     pub album_id: Option<Integer>,
     pub owner_id: Option<Integer>,
     pub user_id: Option<Integer>,
