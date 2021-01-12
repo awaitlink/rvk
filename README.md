@@ -33,7 +33,7 @@ To use this example, you will **also** need the [`tokio`](https://crates.io/toki
 <sub>`Cargo.toml`</sub>
 ```toml
 [dependencies]
-tokio = { version = "0.2", features = ["full"] }
+tokio = { version = "1.0", features = ["full"] }
 ```
 
 <sub>`main.rs`</sub>
