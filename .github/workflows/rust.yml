@@ -13,9 +13,9 @@ jobs:
     - uses: actions/checkout@v1
     - name: configure Rust
       run: |
+        rustup set profile default
         rustup install ${{ matrix.rust }}
         rustup default ${{ matrix.rust }}
-        rustup component add --toolchain ${{ matrix.rust }} rustfmt clippy
     - name: fmt check
       run: cargo fmt -- --check
     - name: clippy
