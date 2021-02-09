@@ -39,7 +39,7 @@ pub struct Post {
 pub struct Comments {
     pub count: Integer,
     pub can_post: Integer,
-    pub groups_can_post: Option<Integer>,
+    pub groups_can_post: Option<Boolean>,
 }
 
 #[derive(Deserialize, Clone, Debug)]
