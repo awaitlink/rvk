@@ -2,7 +2,7 @@
 [![version][badges/version]][crates.io/rvk]
 [![downloads][badges/downloads]][crates.io/rvk]
 [![license][badges/license]][license]
-[![api version][badges/api-version]][vk-api-version]
+![api version][badges/api-version]
 
 > A crate for accessing VK (VKontakte) API in Rust (asynchronously).
 
@@ -72,8 +72,6 @@ If you spot any mistakes or bugs, please [report them][issues]!
 [crates.io/rvk]: https://crates.io/crates/rvk
 
 [docs.rs/rvk]: https://docs.rs/rvk
-
-[vk-api-version]: https://github.com/u32i64/rvk/blob/master/src/lib.rs#L52
 
 [license]: https://github.com/u32i64/rvk/blob/master/LICENSE
 [changelog]: https://github.com/u32i64/rvk/blob/master/CHANGELOG.md
