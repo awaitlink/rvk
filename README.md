@@ -2,10 +2,10 @@
 [![version][badges/version]][crates.io/rvk]
 [![downloads][badges/downloads]][crates.io/rvk]
 [![license][badges/license]][license]
+[![api version][badges/api-version]][vk-api-version]
 
 > A crate for accessing VK (VKontakte) API in Rust (asynchronously).
 
-The version of VK API that is used by this crate can be found [here][vk-api-version].
 Changelog is available [here][changelog].
 
 # Modules
@@ -83,6 +83,7 @@ If you spot any mistakes or bugs, please [report them][issues]!
 [badges/version]: https://img.shields.io/crates/v/rvk.svg?style=for-the-badge
 [badges/downloads]: https://img.shields.io/crates/d/rvk.svg?style=for-the-badge
 [badges/license]: https://img.shields.io/crates/l/rvk.svg?style=for-the-badge
+[badges/api-version]: https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Frvk-api-version-badge.warp.workers.dev
 
 [modules/api]: https://docs.rs/rvk/*/rvk/api/index.html
 [modules/error]: https://docs.rs/rvk/*/rvk/error/index.html
