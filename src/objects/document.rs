@@ -34,7 +34,17 @@ pub struct DocumentPreview {
 
 #[derive(Deserialize, Clone, Debug)]
 pub struct Photo {
-    pub sizes: Vec<photo::Size>,
+    pub sizes: Vec<Size>,
+}
+
+#[derive(Deserialize, Clone, Debug)]
+pub struct Size {
+    pub src: String,
+    pub width: Option<Integer>,
+    pub height: Option<Integer>,
+
+    #[serde(rename = "type")]
+    pub type_: String,
 }
 
 #[derive(Deserialize, Clone, Debug)]
