@@ -46,10 +46,10 @@ pub struct Video {
 /// <https://vk.com/dev/objects/video_image>
 #[derive(Deserialize, Clone, Debug)]
 pub struct VideoImage {
-    url: String,
-    width: Integer,
-    height: Integer,
-    with_padding: Option<Integer>,
+    pub url: String,
+    pub width: Integer,
+    pub height: Integer,
+    pub with_padding: Option<Integer>,
 }
 
 /// <https://vk.com/dev/objects/video_album_full>

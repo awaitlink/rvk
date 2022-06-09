@@ -8,7 +8,7 @@ use std::collections::HashMap;
 pub type Result<T> = std::result::Result<T, Error>;
 
 /// An error returned by the API.
-#[derive(Deserialize, Serialize, Debug, PartialEq, Clone)]
+#[derive(Deserialize, Serialize, Debug, PartialEq, Eq, Clone)]
 pub struct APIError {
     error_code: u64,
     error_msg: String,
