@@ -15,10 +15,10 @@ pub struct Post {
     pub reply_owner_id: Option<Integer>,
     pub reply_post_id: Option<Integer>,
     pub friends_only: Option<Integer>,
-    pub comments: Comments,
-    pub likes: Likes,
-    pub reposts: Reposts,
-    pub views: Views,
+    pub comments: Option<Comments>,
+    pub likes: Option<Likes>,
+    pub reposts: Option<Reposts>,
+    pub views: Option<Views>,
     pub post_type: String,
     pub post_source: Option<post_source::PostSource>,
     pub attachments: Option<Vec<attachment::WallAttachment>>,
@@ -31,7 +31,7 @@ pub struct Post {
     pub can_open: Option<Boolean>,
     pub can_close: Option<Boolean>,
     pub is_pinned: Option<Integer>,
-    pub marked_as_ads: Integer,
+    pub marked_as_ads: Option<Integer>,
     pub is_favorite: Option<Boolean>,
 }
 
