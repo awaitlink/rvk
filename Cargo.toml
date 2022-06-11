@@ -9,7 +9,7 @@ description = "Crate for accessing VK (VKontakte) API"
 repository = "https://github.com/u32i64/rvk"
 keywords = ["vk", "api", "method"]
 categories = ["api-bindings"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 heck = "0.3"
