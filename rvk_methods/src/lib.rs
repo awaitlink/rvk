@@ -9,6 +9,8 @@ pub const API_VERSION: &str = "5.103";
 /// Convenience function to create a new `APIClient`
 /// with the API version that is supported by this crate
 /// (as indicated by [`API_VERSION`]), given an access token.
+///
+/// See [`rvk::APIClient::new`] for further information including potential panics.
 pub fn supported_api_client(token: impl Into<String>) -> APIClient {
     APIClient::new(API_VERSION, token)
 }
