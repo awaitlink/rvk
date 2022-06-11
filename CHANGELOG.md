@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 for separate VK API versions. A given crate can also be used separately if you don't need
 functionality from the other ones.
 - Bumped Rust edition to 2021.
+- `rvk`: `APIClient::new` now requires specifying the desired VK API version.
+- `rvk_methods`: added `supported_api_client` convenience function to create an `APIClient` with the VK API version supported by `rvk_methods`.
 - `rvk_objects`: declare support for API version 5.131 (may be incomplete). Changed `audio::Audio`, `poll::{Poll, Background}`, `post::Post`, and `video::Video`. Many fields
 were made optional---these changes may be applicable to earlier VK API versions.
 
