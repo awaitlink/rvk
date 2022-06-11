@@ -3,6 +3,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [`rvk-0.23.0`], [`rvk_methods-0.1.0`], [`rvk_objects-0.1.0`] - 2022-06-11
+### Changed
+- Split crates into 3 to allow `rvk_methods` and `rvk_objects` to declare support
+for separate VK API versions. A given crate can also be used separately if you don't need
+functionality from the other ones.
+- Bumped Rust edition to 2021.
+- `rvk_objects`: declare support for API version 5.131 (may be incomplete). Changed `audio::Audio`, `poll::{Poll, Background}`, `post::Post`, and `video::Video`. Many fields
+were made optional---these changes may be applicable to earlier VK API versions.
+
 ## [0.22.0] - 2022-06-09
 ### Changed
 - Fix issue with `Size` for `DocumentPreview`'s `Photo` having field named `src` and not `url` by adding `objects::document::Size` and changing `objects::document::Photo` accordingly.
@@ -120,6 +129,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.1.0] - 2018-05-26
 ### First release
 
+[`rvk_objects-0.1.0`]: https://github.com/u32i64/rvk/compare/v0.22.0...rvk_objects-0.1.0
+[`rvk_methods-0.1.0`]: https://github.com/u32i64/rvk/compare/v0.22.0...rvk_methods-0.1.0
+[`rvk-0.23.0`]: https://github.com/u32i64/rvk/compare/v0.22.0...rvk-0.23.0
 [0.22.0]: https://github.com/u32i64/rvk/compare/v0.21.0...v0.22.0
 [0.21.0]: https://github.com/u32i64/rvk/compare/v0.20.0...v0.21.0
 [0.20.0]: https://github.com/u32i64/rvk/compare/v0.19.0...v0.20.0
