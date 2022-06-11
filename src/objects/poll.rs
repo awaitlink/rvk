@@ -19,10 +19,12 @@ pub struct Poll {
     pub can_vote: Boolean,
     pub can_report: Boolean,
     pub can_share: Boolean,
-    pub author_id: Integer,
+    pub disable_unvote: Boolean,
+    pub author_id: Option<Integer>,
     pub photo: Option<photo::Photo>,
     pub background: Option<Background>,
-    pub friends: Vec<PollFriend>,
+    pub friends: Option<Vec<PollFriend>>,
+    pub embed_hash: Option<String>,
 }
 
 #[derive(Deserialize, Clone, Debug)]
@@ -45,7 +47,8 @@ pub struct Background {
     pub width: Option<Integer>,
     pub height: Option<Integer>,
     pub images: Option<photo::Size>,
-    pub points: Option<GradientPoint>,
+    pub points: Option<Vec<GradientPoint>>,
+    pub name: Option<String>,
 }
 
 #[derive(Deserialize, Clone, Debug)]

@@ -11,7 +11,7 @@ pub struct Audio {
     pub url: String,
     pub lyrics_id: Option<Integer>,
     pub album_id: Option<Integer>,
-    pub genre_id: Integer,
+    pub genre_id: Option<Integer>,
     pub date: Integer,
     pub no_search: Option<Integer>,
     pub is_hq: Option<Integer>,

@@ -6,7 +6,7 @@ pub struct Video {
     pub id: Integer,
     pub owner_id: Integer,
     pub title: String,
-    pub description: String,
+    pub description: Option<String>,
     pub duration: Integer,
 
     pub image: Option<Vec<VideoImage>>,
@@ -30,7 +30,7 @@ pub struct Video {
     pub date: Integer,
     pub adding_date: Option<Integer>,
     pub views: Integer,
-    pub comments: Integer,
+    pub comments: Option<Integer>,
     pub player: Option<String>,
     pub platform: Option<String>,
     pub can_edit: Option<Integer>,
