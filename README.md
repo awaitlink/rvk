@@ -1,32 +1,32 @@
 # `rvk`
-[![version][badges/version]][crates.io/rvk]
-[![downloads][badges/downloads]][crates.io/rvk]
-[![license][badges/license]][license]
-[![api version][badges/api-version]][vk-api-version]
 
-> A crate for accessing VK (VKontakte) API in Rust (asynchronously).
+> A set of crates to be able to easily access VK (VKontakte) API in Rust.
 
-Changelog is available [here][changelog].
+The combined changelog for all crates is available [here](https://github.com/u32i64/rvk/blob/master/CHANGELOG.md).
 
-# Modules
+# Crates
 
-- [`api`][modules/api] - works with the API;
-- [`error`][modules/error] - handles errors that may occur during an API call;
-- [`methods`][modules/methods] - contains **API [methods][vk/methods]**;
-- [`objects`][modules/objects] - contains **API [objects][vk/objects]**. See also [note about objects](#objects).
+- [`rvk`](https://crates.io/crates/rvk) ([docs](https://docs.rs/rvk)) --- simple crate for accessing VK API (using `async`/`await`);
+- [`rvk_methods`](https://crates.io/crates/rvk_methods) ([docs](https://docs.rs/rvk_methods)) --- provides VK API [methods](https://vk.com/dev/methods) to avoid the need to specify them as strings, depends on `rvk` to call the methods;
+- [`rvk_objects`](https://crates.io/crates/rvk_objects) ([docs](https://docs.rs/rvk_objects)) --- represents various [objects](https://vk.com/dev/objects) that are returned as JSON by the VK API.
+
+Note that for `rvk_methods` and `rvk_objects`, the supported versions of the VK API may be different.
+Consult the `API_VERSION` constant in these crates to learn which versions they support.
 
 # Usage
-Add the dependency to your project:
+Add the necessary dependencies to your project. For example, to use all 3:
 
 <sub>`Cargo.toml`</sub>
 ```toml
 [dependencies]
-rvk = "0.22"
+rvk = "0.23"
+rvk_methods = "0.1"
+rvk_objects = "0.1"
 ```
 
-Now you can take a look at `rvk`'s [API documentation][docs.rs/rvk] to learn more about the available functions.
+Now you can take a look at the documentation (linked above for each crate) to learn more about the available functions.
 
-# Example
+# Example using all 3 crates
 
 To use this example, you will **also** need the [`tokio`](https://crates.io/tokio) crate for the `tokio::main` attribute proc macro.
 
@@ -38,15 +38,20 @@ tokio = { version = "1.0", features = ["full"] }
 
 <sub>`main.rs`</sub>
 ```rust
-use rvk::{methods::users, objects::user::User, APIClient, Params};
+use rvk::Params;
+use rvk_methods::users;
+use rvk_objects::user::User;
 
 #[tokio::main]
 async fn main() {
-    let api = APIClient::new("your_access_token"); // Create an API Client
+    // Create an API client that uses the API version supported by `rvk_methods`.
+    let api = rvk_methods::supported_api_client("your_access_token");
 
-    let mut params = Params::new(); // Create a HashMap to store parameters
+    // A HashMap to store parameters.
+    let mut params = Params::new();
     params.insert("user_ids".into(), "1".into());
 
+    // Use a type from `rvk_objects` as the result type.
     let res = users::get::<Vec<User>>(&api, params).await;
 
     match res {
@@ -62,32 +67,3 @@ async fn main() {
     };
 }
 ```
-
-# Notes
-### Objects
-Due to the nature of the VK API documentation, it is not always clear if the value is always passed or not, and sometimes the data type is not defined.
-
-If you spot any mistakes or bugs, please [report them][issues]!
-
-[crates.io/rvk]: https://crates.io/crates/rvk
-
-[docs.rs/rvk]: https://docs.rs/rvk
-
-[license]: https://github.com/u32i64/rvk/blob/master/LICENSE
-[changelog]: https://github.com/u32i64/rvk/blob/master/CHANGELOG.md
-
-[issues]: https://github.com/u32i64/rvk/issues
-
-[badges/version]: https://img.shields.io/crates/v/rvk.svg?style=for-the-badge
-[badges/downloads]: https://img.shields.io/crates/d/rvk.svg?style=for-the-badge
-[badges/license]: https://img.shields.io/crates/l/rvk.svg?style=for-the-badge
-[badges/api-version]: https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Frvk-api-version-badge.warp.workers.dev
-[vk-api-version]: https://github.com/u32i64/rvk/blob/master/src/lib.rs#L47-L48
-
-[modules/api]: https://docs.rs/rvk/*/rvk/api/index.html
-[modules/error]: https://docs.rs/rvk/*/rvk/error/index.html
-[modules/methods]: https://docs.rs/rvk/*/rvk/methods/index.html
-[modules/objects]: https://docs.rs/rvk/*/rvk/objects/index.html
-
-[vk/methods]: https://vk.com/dev/methods
-[vk/objects]: https://vk.com/dev/objects

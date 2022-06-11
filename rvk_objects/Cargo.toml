@@ -1,0 +1,15 @@
+[package]
+name = "rvk_objects"
+version = "0.1.0"
+authors = ["Artem Varaksa <artvaraksa@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+description = "Crate providing objects for use with VK (VKontakte) API"
+repository = "https://github.com/u32i64/rvk"
+keywords = ["vk", "api", "object"]
+categories = ["api-bindings"]
+edition = "2021"
+
+[dependencies]
+serde = "1.0"
+serde_derive = "1.0"

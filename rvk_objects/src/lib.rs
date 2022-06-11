@@ -1,16 +1,8 @@
-//! Represents various objects that are returned as JSON by the API.
-//!
-//! ## Note: `type` and `ref` fields
-//!
-//! Since `type` and `ref` are Rust keywords, an underscore (`_`) is added at the end of these:
-//! - `type` **->** `type_`,
-//! - `ref` **->** `ref_`.
-//!
-//! ## Note
-//!
-//! Due to the nature of the VK API documentation, it is not always clear if the value is always passed or not, and sometimes the data type is not defined.
-//!
-//! If you spot any mistakes or bugs, please [report them](https://github.com/u32i64/rvk/issues)!
+#![doc(html_logo_url = "https://raw.githubusercontent.com/u32i64/rvk/master/logo.png")]
+#![doc = include_str!("../README.md")]
+
+/// Defines the version of VK API that is generally considered to be "supported" by this version of the crate.
+pub const API_VERSION: &str = "5.131";
 
 use serde_derive::Deserialize;
 

@@ -1,16 +1,17 @@
-//! Contains all of the API methods in the respective submodules.
-//!
-//! ## Note about naming
-//! Rust prefers `snake_case` in the function names instead of `camelCase` used by the VK API,
-//! which means all of the API method's corresponding functions are named using `snake_case`.
-//!
-//! **Example:** To call the `appWidgets.getAppImageUploadServer` API method, use the `rvk::methods::app_widgets::get_app_image_upload_server` function.
-//!
-//! ## Note: `execute`
-//! The `execute` method has no category, so its path is `rvk::methods::execute`.
-//!
-//! ## Note: `photos.move`
-//! Since `move` is a Rust keyword, the function for calling `photos.move` API method is `rvk::methods::photos::move_` (**with the underscore!**)
+#![doc(html_logo_url = "https://raw.githubusercontent.com/u32i64/rvk/master/logo.png")]
+#![doc = include_str!("../README.md")]
+
+use rvk::APIClient;
+
+/// Defines the version of VK API that is used by default and generally considered "supported" by this version of the crate.
+pub const API_VERSION: &str = "5.103";
+
+/// Convenience function to create a new `APIClient`
+/// with the API version that is supported by this crate
+/// (as indicated by [`API_VERSION`]), given an access token.
+pub fn supported_api_client(token: impl Into<String>) -> APIClient {
+    APIClient::new(API_VERSION, token)
+}
 
 macro_rules! api_category {
     ($category:expr; methods { $($name:ident),* }) => {
@@ -48,9 +49,9 @@ macro_rules! api_method {
     ($func_name:ident, $method_name:expr) => {
         /// Calls the corresponding VK API method.
         pub async fn $func_name<T: serde::de::DeserializeOwned>(
-            api: &crate::api::APIClient,
-            params: crate::Params,
-        ) -> crate::error::Result<T> {
+            api: &rvk::api::APIClient,
+            params: rvk::Params,
+        ) -> rvk::error::Result<T> {
             api.call_method::<T>($method_name, params).await
         }
     };

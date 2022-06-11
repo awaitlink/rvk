@@ -1,9 +1,6 @@
-//! Works with the API
+//! Performs calls to the VK API.
 
-use crate::{
-    error::{APIError, Result},
-    API_VERSION,
-};
+use crate::error::{APIError, Result};
 use reqwest::{Client, Response};
 use serde::de::DeserializeOwned;
 use serde_json::{from_value, Map, Value};
@@ -16,19 +13,21 @@ pub type Params = HashMap<String, String>;
 #[derive(Debug)]
 pub struct APIClient {
     client: Client,
+    api_version: String,
     token: String,
 }
 
 impl APIClient {
-    /// Creates a new `APIClient`, given an access token.
+    /// Creates a new `APIClient`, given a VK API version and an access token.
     ///
     /// # Panics
     /// This method panics if native TLS backend cannot be created or initialized by the `reqwest` crate.
     ///
     /// See [reqwest docs](https://docs.rs/reqwest/0.10/reqwest/struct.Client.html#panic) for more information.
-    pub fn new(token: impl Into<String>) -> APIClient {
+    pub fn new(api_version: impl Into<String>, token: impl Into<String>) -> APIClient {
         APIClient {
             client: Client::new(),
+            api_version: api_version.into(),
             token: token.into(),
         }
     }
@@ -39,7 +38,7 @@ impl APIClient {
         method_name: &str,
         mut params: Params,
     ) -> Result<T> {
-        params.insert("v".into(), API_VERSION.into());
+        params.insert("v".into(), self.api_version.clone());
         params.insert("access_token".into(), self.token.clone());
 
         let response_result: Result<Response> = self

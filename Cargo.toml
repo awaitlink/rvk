@@ -1,25 +1,2 @@
-[package]
-name = "rvk"
-# README.md, CHANGELOG.md
-version = "0.22.0"
-authors = ["Artem Varaksa <artvaraksa@gmail.com>"]
-readme = "README.md"
-license = "MIT"
-description = "Crate for accessing VK (VKontakte) API"
-repository = "https://github.com/u32i64/rvk"
-keywords = ["vk", "api", "method"]
-categories = ["api-bindings"]
-edition = "2021"
-
-[dependencies]
-heck = "0.3"
-reqwest = { version = "0.11", features = ["json"] }
-serde = "1.0"
-serde_json = "1.0"
-serde_derive = "1.0"
-thiserror = "1.0"
-lazy_static = "1.1.0"
-
-[dev-dependencies]
-# For examples
-tokio = { version = "1.0", features = ["full"] }
+[workspace]
+members = ["rvk", "rvk_methods", "rvk_objects"]

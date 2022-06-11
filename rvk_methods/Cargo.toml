@@ -1,0 +1,22 @@
+[package]
+name = "rvk_methods"
+version = "0.1.0"
+authors = ["Artem Varaksa <artvaraksa@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+description = "Crate providing methods of VK (VKontakte) API"
+repository = "https://github.com/u32i64/rvk"
+keywords = ["vk", "api", "method"]
+categories = ["api-bindings"]
+edition = "2021"
+
+[dependencies]
+rvk = { path = "../rvk/", version = "0.23.0" }
+heck = "0.3"
+serde = "1.0"
+lazy_static = "1.1.0"
+
+[dev-dependencies]
+# For examples
+tokio = { version = "1.0", features = ["full"] }
+rvk_objects = { path = "../rvk_objects/", version = "0.1" }
