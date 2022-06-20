@@ -6,9 +6,9 @@ The combined changelog for all crates is available [here](https://github.com/u32
 
 ## Crates
 
-- [`rvk`](https://crates.io/crates/rvk) ([docs](https://docs.rs/rvk)) --- simple crate for accessing VK API (using `async`/`await`);
-- [`rvk_methods`](https://crates.io/crates/rvk_methods) ([docs](https://docs.rs/rvk_methods)) --- provides VK API [methods](https://vk.com/dev/methods) to avoid the need to specify them as strings, depends on `rvk` to call the methods;
-- [`rvk_objects`](https://crates.io/crates/rvk_objects) ([docs](https://docs.rs/rvk_objects)) --- represents various [objects](https://vk.com/dev/objects) that are returned as JSON by the VK API.
+- [`rvk`](https://crates.io/crates/rvk) ([docs](https://docs.rs/rvk)) — simple crate for accessing VK API (using `async`/`await`);
+- [`rvk_methods`](https://crates.io/crates/rvk_methods) ([docs](https://docs.rs/rvk_methods)) — provides VK API [methods](https://vk.com/dev/methods) to avoid the need to specify them as strings, depends on `rvk` to call the methods;
+- [`rvk_objects`](https://crates.io/crates/rvk_objects) ([docs](https://docs.rs/rvk_objects)) — represents various [objects](https://vk.com/dev/objects) that are returned as JSON by the VK API.
 
 Note that for `rvk_methods` and `rvk_objects`, the supported versions of the VK API may be different.
 Consult the `API_VERSION` constant in these crates to learn which versions they support.
