@@ -3,9 +3,9 @@ use super::*;
 /// <https://vk.com/dev/objects/message>
 #[derive(Deserialize, Clone, Debug)]
 pub struct Message {
-    pub id: Integer,
+    pub id: Option<Integer>,
     pub date: Integer,
-    pub peer_id: Integer,
+    pub peer_id: Option<Integer>,
     pub from_id: Integer,
     pub text: Option<String>,
     pub random_id: Option<Integer>,
@@ -23,6 +23,10 @@ pub struct Message {
     pub action: Option<Action>,
 
     pub is_cropped: Option<Boolean>, // might be Option<Integer>; from changelog v5.102 @ https://vk.com/dev/versions
+
+    pub conversation_message_id: Option<Integer>,
+    pub is_hidden: Option<Boolean>,
+    pub out: Option<Integer>,
 }
 
 #[derive(Deserialize, Clone, Debug)]
