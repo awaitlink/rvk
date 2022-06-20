@@ -19,4 +19,4 @@ lazy_static = "1.1.0"
 [dev-dependencies]
 # For examples
 tokio = { version = "1.0", features = ["full"] }
-rvk_objects = { path = "../rvk_objects/", version = "0.1" }
+rvk_objects = { path = "../rvk_objects/", version = "0.2" }
